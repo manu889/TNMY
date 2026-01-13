@@ -56,7 +56,7 @@ function HeroImageSlider() {
         </div>
       ))}
       <div className="absolute inset-0 bg-black/20" />
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-900/30 via-slate-900/40 to-slate-900/50" />
+      <div className="absolute inset-0 bg-linear-to-b from-slate-900/30 via-slate-900/40 to-slate-900/50" />
     </div>
   );
 }
@@ -67,37 +67,37 @@ export default function Home() {
   const services = [
     {
       title: "Outstation Taxi",
-      desc: "Coorg, Ooty, Wayanad, Bangalore and more with transparent pricing.",
+      desc: "Book outstation cabs from Mysore to Coorg, Ooty, Wayanad, Bangalore and more with transparent pricing.",
       meta: "Starting from ₹13/km",
       href: ROUTES.OUTSTATION_TAXI,
     },
     {
       title: "Local Sightseeing",
-      desc: "Half-day and full-day local packages with flexible stops.",
+      desc: "Half-day and full-day Mysore sightseeing taxi packages with flexible stops.",
       meta: "City limits coverage",
       href: ROUTES.SIGHTSEEING_TAXI,
     },
     {
       title: "Airport Transfer",
-      desc: "On-time pickup and drop to major airports with clear coordination.",
+      desc: "Mysore to Bangalore airport taxi with on-time pickup and clear coordination.",
       meta: "Starting from ₹1,800",
       href: ROUTES.AIRPORT_TRANSFER,
     },
     {
       title: "Tour Packages",
-      desc: "Curated itineraries with experienced drivers for family and group travel.",
+      desc: "Mysore tour packages by car with curated itineraries and experienced drivers.",
       meta: "Customizable plans",
       href: ROUTES.TOUR_PACKAGES,
     },
     {
       title: "Corporate Cab",
-      desc: "Reliable pickups for teams with professional drivers.",
+      desc: "Corporate cab service in Mysore with reliable pickups and professional drivers.",
       meta: "Monthly billing",
       href: ROUTES.CORPORATE_CAB,
     },
     {
       title: "Wedding Car Rental",
-      desc: "Premium cars for events with on-time service.",
+      desc: "Wedding car rental in Mysore with premium cars and on-time service.",
       meta: "Decor-ready",
       href: ROUTES.WEDDING_CAR,
     },
@@ -181,6 +181,56 @@ export default function Home() {
     },
   ];
 
+  const whatsappFor = (message: string) => {
+    const phone = BUSINESS_INFO.whatsapp.replace(/\+/g, "");
+    return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+  };
+
+  const popularRoutes = [
+    {
+      title: "Mysore to Coorg Taxi",
+      subtitle: "Outstation cab for family trips & weekend getaways",
+      meta: "~120 km • One-way & round trip",
+      href: ROUTES.MYSORE_TO_COORG,
+      wa: "Hi, I want a quote for Mysore to Coorg taxi. Please share rate and available vehicles.",
+    },
+    {
+      title: "Mysore to Ooty Cab",
+      subtitle: "Hill-station taxi with experienced ghat-road drivers",
+      meta: "~125 km • 2–3 day plans",
+      href: ROUTES.MYSORE_TO_OOTY,
+      wa: "Hi, I want to book Mysore to Ooty cab. Please share itinerary options and total fare.",
+    },
+    {
+      title: "Mysore to Wayanad Taxi",
+      subtitle: "Outstation cab for resorts, wildlife & group travel",
+      meta: "~140 km • Custom stops",
+      href: ROUTES.MYSORE_TO_WAYANAD,
+      wa: "Hi, I need Mysore to Wayanad taxi. Please share fare and vehicle options.",
+    },
+    {
+      title: "Mysore to Bangalore Taxi",
+      subtitle: "Intercity cab for business travel & airport connections",
+      meta: "~145 km • Fast pickup",
+      href: ROUTES.MYSORE_TO_BANGALORE,
+      wa: "Hi, I want to book Mysore to Bangalore taxi. Please share one-way/round-trip price.",
+    },
+    {
+      title: "Mysore Airport Transfer",
+      subtitle: "Reliable Bangalore airport taxi from Mysore",
+      meta: "On-time pickup • Flight-friendly",
+      href: ROUTES.AIRPORT_TRANSFER,
+      wa: "Hi, I need Mysore to Bangalore airport transfer. Pickup date/time is __ and passengers __.",
+    },
+    {
+      title: "Mysore Local Sightseeing",
+      subtitle: "Half-day & full-day local taxi packages",
+      meta: "Palace • Zoo • Chamundi Hills",
+      href: ROUTES.SIGHTSEEING_TAXI,
+      wa: "Hi, I want Mysore local sightseeing taxi package. Please share half-day/full-day rates.",
+    },
+  ];
+
             return (
               <>
                 <section className="relative overflow-hidden bg-slate-900 border-b border-slate-700">
@@ -191,9 +241,9 @@ export default function Home() {
                         <div className="inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-slate-700 ring-1 ring-slate-900/10">
                           Rated {BUSINESS_INFO.rating.value}/{BUSINESS_INFO.rating.max} • {BUSINESS_INFO.rating.count}+ reviews
                         </div>
-                        <h1 className="mt-6 text-4xl md:text-5xl font-bold tracking-tight text-white drop-shadow-lg">Book trusted cabs from Mysore</h1>
+                        <h1 className="mt-6 text-4xl md:text-5xl font-bold tracking-tight text-white drop-shadow-lg">Book a Mysore Taxi in Minutes</h1>
                         <p className="mt-4 text-lg text-white/90 leading-relaxed max-w-xl drop-shadow mx-auto">
-                          Outstation, airport transfers, and local rentals with clean vehicles, experienced drivers, and transparent pricing.
+                          Outstation cabs from Mysore (Coorg, Ooty, Wayanad, Bangalore), Bangalore airport taxi, and Mysore local sightseeing packages with clean vehicles, verified drivers, and transparent pricing.
                         </p>
 
                         <div className="mt-6 space-y-3 max-w-xl mx-auto">
@@ -201,25 +251,25 @@ export default function Home() {
                             <svg className="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
                               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                             </svg>
-                            <span className="text-sm font-medium drop-shadow">Professional verified drivers with local expertise</span>
+                            <span className="text-sm font-medium drop-shadow">Instant cab booking in Mysore with verified drivers</span>
                           </div>
                           <div className="flex items-center justify-center gap-3 text-white/95">
                             <svg className="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
                               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                             </svg>
-                            <span className="text-sm font-medium drop-shadow">Well-maintained vehicles sanitized before every trip</span>
+                            <span className="text-sm font-medium drop-shadow">Clean AC cabs for airport, outstation & local trips</span>
                           </div>
                           <div className="flex items-center justify-center gap-3 text-white/95">
                             <svg className="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
                               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                             </svg>
-                            <span className="text-sm font-medium drop-shadow">No hidden charges – transparent pricing guaranteed</span>
+                            <span className="text-sm font-medium drop-shadow">Fixed, transparent fares (no hidden charges)</span>
                           </div>
                           <div className="flex items-center justify-center gap-3 text-white/95">
                             <svg className="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
                               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                             </svg>
-                            <span className="text-sm font-medium drop-shadow">24/7 customer support for booking changes</span>
+                            <span className="text-sm font-medium drop-shadow">24/7 support on call & WhatsApp</span>
                           </div>
                         </div>
 
@@ -272,9 +322,9 @@ export default function Home() {
                       <div className="inline-flex items-center rounded-full bg-slate-50 px-4 py-2 text-xs font-semibold tracking-wide text-slate-600 ring-1 ring-slate-900/10">
                         Wide Range of Options
                       </div>
-                      <h2 className="mt-4 text-3xl md:text-4xl font-bold text-slate-900">Fleet of Cabs Available in Mysore</h2>
+                      <h2 className="mt-4 text-3xl md:text-4xl font-bold text-slate-900">Choose Your Cab in Mysore: Sedan, SUV, Tempo Traveller & Bus</h2>
                       <p className="mt-3 text-center text-slate-600 max-w-3xl mx-auto">
-                        Choose from sedans, SUVs, tempo travelers, and buses for your Mysore to Coorg, Ooty, and outstation trips. All vehicles are well-maintained, clean, and driven by professional drivers.
+                        Book the right vehicle for your trip—sedan taxi for couples, SUV cabs for family outstation travel, tempo traveller rentals for groups, and tourist bus booking for events. Best for Mysore to Coorg/Ooty/Wayanad routes and Bangalore airport transfers.
                       </p>
                     </div>
 
@@ -309,9 +359,9 @@ export default function Home() {
                       <div className="inline-flex items-center rounded-full bg-blue-50 px-4 py-2 text-xs font-semibold tracking-wide text-blue-700 ring-1 ring-blue-200">
                         Popular Destinations
                       </div>
-                      <h2 className="mt-4 text-3xl md:text-4xl font-bold text-slate-900">Top Travel Destinations Near Mysore</h2>
+                      <h2 className="mt-4 text-3xl md:text-4xl font-bold text-slate-900">Popular Outstation Routes from Mysore</h2>
                       <p className="mt-3 text-center text-slate-600 max-w-3xl mx-auto">
-                        Book your cab to reach scenic hill stations and tourist attractions near Mysore. From coffee plantations in Coorg to mountain trails in Ooty and Wayanad, we'll get you there safely.
+                        Need an outstation cab from Mysore? Book comfortable taxi service to Coorg, Ooty, Wayanad, Bangalore, and Kodaikanal with experienced drivers, safe travel, and easy WhatsApp confirmation.
                       </p>
                     </div>
 
@@ -336,9 +386,9 @@ export default function Home() {
                       <div className="inline-flex items-center rounded-full bg-slate-50 px-4 py-2 text-xs font-semibold tracking-wide text-slate-600 ring-1 ring-slate-900/10">
                         Our Services
                       </div>
-                      <h2 className="mt-4 text-3xl md:text-4xl font-bold text-center text-slate-900">Choose the right cab service</h2>
+                      <h2 className="mt-4 text-3xl md:text-4xl font-bold text-center text-slate-900">Taxi Services in Mysore (Outstation, Airport, Local & Corporate)</h2>
                       <p className="mt-3 text-center text-slate-600 max-w-2xl mx-auto">
-                        Share your trip details and get a fast confirmation on WhatsApp.
+                        Share pickup, drop, date, and passengers—get an instant quote and quick confirmation on WhatsApp.
                       </p>
                     </div>
 
@@ -368,15 +418,88 @@ export default function Home() {
                   </div>
                 </section>
 
+                <section className="bg-white">
+                  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                    <div className="text-center">
+                      <div className="inline-flex items-center rounded-full bg-emerald-50 px-4 py-2 text-xs font-semibold tracking-wide text-emerald-700 ring-1 ring-emerald-200">
+                        High-Intent Routes
+                      </div>
+                      <h2 className="mt-4 text-3xl md:text-4xl font-bold text-slate-900">Popular Taxi Routes from Mysore</h2>
+                      <p className="mt-3 text-center text-slate-600 max-w-3xl mx-auto">
+                        Quick enquiries for the most-booked Mysore taxi routes. Tap WhatsApp to get a rate, vehicle options, and availability in minutes.
+                      </p>
+                    </div>
+
+                    <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {popularRoutes.map((r) => (
+                        <div key={r.title} className="rounded-2xl border border-slate-200 bg-white p-7 hover:shadow-lg transition-shadow">
+                          <div className="flex items-start justify-between gap-4">
+                            <div className="min-w-0">
+                              <h3 className="text-xl font-bold text-slate-900">{r.title}</h3>
+                              <p className="mt-2 text-sm text-slate-600">{r.subtitle}</p>
+                              <div className="mt-4 inline-flex items-center rounded-full bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-700 ring-1 ring-slate-900/10">
+                                {r.meta}
+                              </div>
+                            </div>
+                            <div className="shrink-0 rounded-xl bg-emerald-50 p-2.5 ring-1 ring-emerald-200">
+                              <CheckIcon className="w-5 h-5 text-emerald-700" />
+                            </div>
+                          </div>
+
+                          <div className="mt-6 flex flex-col sm:flex-row gap-3">
+                            <Link
+                              href={r.href}
+                              className="inline-flex flex-1 items-center justify-center rounded-xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white hover:bg-slate-800 transition-colors"
+                            >
+                              View Details
+                            </Link>
+                            <a
+                              href={whatsappFor(r.wa)}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex flex-1 items-center justify-center rounded-xl bg-emerald-600 px-4 py-3 text-sm font-semibold text-white hover:bg-emerald-700 transition-colors"
+                            >
+                              WhatsApp Enquiry
+                            </a>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="mt-10 rounded-2xl bg-slate-50 p-8 text-center ring-1 ring-slate-900/10">
+                      <h3 className="text-xl md:text-2xl font-bold text-slate-900">Need a custom route or multi-stop trip?</h3>
+                      <p className="mt-3 text-slate-600 max-w-2xl mx-auto">
+                        Share your itinerary (pickup, drop, stops, date, time, passengers). We’ll recommend the best cab type and send a quick quote.
+                      </p>
+                      <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
+                        <a
+                          href={whatsappFor("Hi, I need a quote for a taxi from Mysore. Pickup: __, Drop: __, Date/Time: __, Passengers: __, Trip type: one-way/round-trip.")}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center justify-center rounded-xl bg-emerald-600 px-7 py-3 text-base font-semibold text-white hover:bg-emerald-700 transition-colors"
+                        >
+                          WhatsApp for Quote
+                        </a>
+                        <Link
+                          href={ROUTES.BOOK_TAXI}
+                          className="inline-flex items-center justify-center rounded-xl bg-white px-7 py-3 text-base font-semibold text-slate-900 ring-1 ring-slate-900/10 hover:bg-slate-100 transition-colors"
+                        >
+                          Book Online
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
                 <section className="bg-slate-50">
                   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                     <div className="text-center">
                       <div className="inline-flex items-center rounded-full bg-blue-50 px-4 py-2 text-xs font-semibold tracking-wide text-blue-700 ring-1 ring-blue-200">
                         Curated Experiences
                       </div>
-                      <h2 className="mt-4 text-3xl md:text-4xl font-bold text-slate-900">Tour Packages from Mysore</h2>
+                      <h2 className="mt-4 text-3xl md:text-4xl font-bold text-slate-900">Best Tour Packages from Mysore (Car with Driver)</h2>
                       <p className="mt-3 text-center text-slate-600 max-w-3xl mx-auto">
-                        Explore popular tour packages from Mysore including Coorg, Ooty, Wayanad, and Bangalore. One-day sightseeing tours and multi-day packages with experienced guides and comfortable transportation included.
+                        Explore Mysore tour packages by car including Coorg, Ooty, Wayanad, and Bangalore. Choose one-day sightseeing or multi-day itineraries with comfortable cabs, experienced drivers, and easy booking.
                       </p>
                     </div>
 
@@ -416,9 +539,9 @@ export default function Home() {
                       <div className="inline-flex items-center rounded-full bg-blue-50 px-4 py-2 text-xs font-semibold tracking-wide text-blue-700 ring-1 ring-blue-200">
                         What our customers say
                       </div>
-                      <h2 className="mt-4 text-3xl md:text-4xl font-bold text-slate-900">Customer testimonials</h2>
+                      <h2 className="mt-4 text-3xl md:text-4xl font-bold text-slate-900">Trusted Mysore Cab Service Reviews</h2>
                       <p className="mt-3 text-center text-slate-600 max-w-2xl mx-auto">
-                        Real feedback from travelers who trusted us for their journeys.
+                        Real feedback from customers who booked outstation taxis, airport transfers, and local sightseeing cabs.
                       </p>
                     </div>
 
@@ -430,7 +553,7 @@ export default function Home() {
                               <span key={i} className="text-yellow-400 text-lg">★</span>
                             ))}
                           </div>
-                          <p className="text-slate-700 leading-relaxed text-base">"{t.text}"</p>
+                          <p className="text-slate-700 leading-relaxed text-base">&ldquo;{t.text}&rdquo;</p>
                           <div className="mt-6 pt-6 border-t border-slate-200">
                             <div className="font-semibold text-slate-900">{t.name}</div>
                             <div className="text-sm text-slate-600 mt-1">Trip: {t.route}</div>
@@ -454,7 +577,7 @@ export default function Home() {
                       <div className="rounded-2xl border border-slate-200 bg-slate-50 p-8">
                         <h3 className="text-2xl font-bold text-slate-900">Complete Taxi Services in Mysore</h3>
                         <p className="mt-4 text-slate-700 leading-relaxed">
-                          As a full-service travel agency in Mysore, we provide taxi services for every occasion. Whether you need a quick airport transfer, a comfortable outstation cab to Coorg or Ooty, or a multi-day tour package exploring South India's hill stations, our travels in Mysore service has you covered. We operate 24/7 with transparent pricing starting at just ₹13/km for outstation trips and ₹1,800 for local packages.
+                          As a full-service travel agency in Mysore, we provide taxi services for every occasion. Whether you need a quick airport transfer, a comfortable outstation cab to Coorg or Ooty, or a multi-day tour package exploring South India&apos;s hill stations, our travels in Mysore service has you covered. We operate 24/7 with transparent pricing starting at just ₹13/km for outstation trips and ₹1,800 for local packages.
                         </p>
                         <p className="mt-4 text-slate-700 leading-relaxed">
                           Our Mysore taxi service includes sedans for couples, SUVs for families, tempo travellers for groups, and buses for large gatherings. All vehicles come with experienced drivers who know the routes inside out, ensuring safe and timely travel. Book your travels in Mysore with us for a hassle-free experience.
@@ -492,10 +615,10 @@ export default function Home() {
                       </div>
                     </div>
 
-                    <div className="mt-12 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 p-10 text-white text-center">
+                    <div className="mt-12 rounded-2xl bg-linear-to-br from-blue-600 to-indigo-700 p-10 text-white text-center">
                       <h3 className="text-3xl font-bold">Book the Best Travels in Mysore Today</h3>
                       <p className="mt-4 text-lg text-white/90 max-w-3xl mx-auto">
-                        Experience the difference with Karnataka's most trusted travel agency. Our taxi services in Mysore combine reliability, comfort, and affordability. Whether it's a local trip or an outstation adventure, MM Mysore Travels is your perfect travel partner.
+                        Experience the difference with Karnataka&apos;s most trusted travel agency. Our taxi services in Mysore combine reliability, comfort, and affordability. Whether it&apos;s a local trip or an outstation adventure, MM Mysore Travels is your perfect travel partner.
                       </p>
                       <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
                         <Link href={ROUTES.BOOK_TAXI} className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-white text-blue-700 font-bold text-lg hover:bg-slate-100 transition-colors shadow-lg">
@@ -513,11 +636,11 @@ export default function Home() {
                   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
                     <div className="text-center">
                       <div className="inline-flex items-center rounded-full bg-blue-50 px-4 py-2 text-xs font-semibold tracking-wide text-blue-700 ring-1 ring-blue-200">
-                        Why we're trusted
+                        Why we&apos;re trusted
                       </div>
-                      <h2 className="mt-6 text-4xl md:text-5xl font-bold text-slate-900">What Makes Us Different</h2>
+                      <h2 className="mt-6 text-4xl md:text-5xl font-bold text-slate-900">Why People Choose Our Mysore Taxi Service</h2>
                       <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
-                        Years of experience, proven reliability, and genuine care for your journey.
+                        Reliable cab booking in Mysore with clean vehicles, verified drivers, and on-time pickups for airport, outstation, and local packages.
                       </p>
                     </div>
 
@@ -542,8 +665,8 @@ export default function Home() {
                           color: "from-emerald-400 to-emerald-600",
                         },
                       ].map((stat, idx) => (
-                        <div key={idx} className="rounded-2xl bg-gradient-to-br p-8 text-white shadow-lg" style={{ backgroundImage: `linear-gradient(135deg, var(--color-1), var(--color-2))` }}>
-                          <div className={`text-5xl font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}>{stat.number}</div>
+                        <div key={idx} className="rounded-2xl bg-linear-to-br p-8 text-white shadow-lg" style={{ backgroundImage: `linear-gradient(135deg, var(--color-1), var(--color-2))` }}>
+                          <div className={`text-5xl font-bold bg-linear-to-r ${stat.color} bg-clip-text text-transparent`}>{stat.number}</div>
                           <div className="mt-3 text-lg font-semibold text-slate-900">{stat.label}</div>
                           <p className="mt-2 text-slate-700 text-sm">{stat.desc}</p>
                         </div>
@@ -571,9 +694,9 @@ export default function Home() {
                 <section className="bg-slate-900 text-white">
                   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
                     <div className="text-center max-w-3xl mx-auto">
-                      <h2 className="text-4xl md:text-5xl font-bold">Ready for your journey?</h2>
+                      <h2 className="text-4xl md:text-5xl font-bold">Ready to book your Mysore cab?</h2>
                       <p className="mt-4 text-lg text-slate-300">
-                        Book instantly online, confirm on WhatsApp, or call us. We're here 24/7.
+                        Book instantly online, confirm your trip on WhatsApp, or call us for airport taxi, outstation cabs, and Mysore local packages. We&apos;re here 24/7.
                       </p>
                       <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
                         <Link href={ROUTES.BOOK_TAXI} className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-white text-slate-900 font-bold text-lg hover:bg-slate-100 transition-colors shadow-lg">
