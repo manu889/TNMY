@@ -9,8 +9,7 @@ import { ROUTES } from "@/lib/constants/routes";
 export function Header() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [openDesktopMenu, setOpenDesktopMenu] = useState<null | "tour" | "destinations" | "services">(null);
-  const tourMenuRef = useRef<HTMLDivElement | null>(null);
+  const [openDesktopMenu, setOpenDesktopMenu] = useState<null | "destinations" | "services">(null);
   const destinationsMenuRef = useRef<HTMLDivElement | null>(null);
   const servicesMenuRef = useRef<HTMLDivElement | null>(null);
 
@@ -42,18 +41,8 @@ export function Header() {
 
   const tourMenu = useMemo(
     () => ({
-      primary: [
-        { label: "All Tour Packages", href: ROUTES.TOUR_PACKAGES, description: "Browse all categories" },
-        { label: "One Day Tours", href: ROUTES.ONE_DAY_TOURS, description: "Local sightseeing & day trips" },
-        { label: "Multi Day Tours", href: ROUTES.MULTI_DAY_TOURS, description: "Coorg, Ooty, Wayanad & more" },
-        { label: "Custom Packages", href: ROUTES.CUSTOM_PACKAGES, description: "Build your own itinerary" },
-      ],
-      featured: [
-        { label: "Mysore One Day Tour", href: ROUTES.MYSORE_ONE_DAY_TOUR },
-        { label: "Mysore Ooty Coorg", href: ROUTES.MYSORE_OOTY_COORG },
-        { label: "Mysore Ooty Kodaikanal", href: ROUTES.MYSORE_OOTY_KODAIKANAL },
-        { label: "Tirupati Package", href: ROUTES.TIRUPATI_PACKAGE },
-      ],
+      primary: [],
+      featured: [],
     }),
     []
   );
@@ -80,7 +69,6 @@ export function Header() {
         { label: "Airport Transfer", href: ROUTES.AIRPORT_TRANSFER, description: "On-time pickup to/from airports" },
       ],
       extra: [
-        { label: "Tour Packages", href: ROUTES.TOUR_PACKAGES },
         { label: "Corporate Cab", href: ROUTES.CORPORATE_CAB },
         { label: "Wedding Car Rental", href: ROUTES.WEDDING_CAR },
       ],
@@ -159,7 +147,7 @@ export function Header() {
 
                 {openDesktopMenu === "services" && (
                   <div
-                    className="absolute left-1/2 top-full mt-2 w-[min(640px,calc(100vw-2rem))] -translate-x-1/2 rounded-2xl bg-white p-4 ring-1 ring-slate-900/10 shadow-xl"
+                    className="absolute left-1/2 top-full -mt-2 pt-2 w-[min(640px,calc(100vw-2rem))] -translate-x-1/2 rounded-2xl bg-white p-4 ring-1 ring-slate-900/10 shadow-xl"
                     role="menu"
                     aria-label="Services"
                     onMouseEnter={() => setOpenDesktopMenu("services")}
@@ -205,94 +193,17 @@ export function Header() {
                 )}
               </div>
 
-              {/* Tour Packages mega menu */}
-              <div
-                ref={tourMenuRef}
-                className="relative"
-                onMouseEnter={() => setOpenDesktopMenu("tour")}
-                onMouseLeave={() => setOpenDesktopMenu(null)}
-                onFocusCapture={() => setOpenDesktopMenu("tour")}
-                onBlurCapture={(e) => closeDesktopMenuOnBlur(e, tourMenuRef)}
-                onKeyDown={(e) => {
-                  if (e.key === "Escape") setOpenDesktopMenu(null);
-                }}
+              {/* Tour Packages Link */}
+              <Link
+                href={ROUTES.TOUR_PACKAGES}
+                className={`px-3 py-2 text-sm font-semibold transition-colors rounded-md ${
+                  pathname?.startsWith(ROUTES.TOUR_PACKAGES)
+                    ? "text-blue-700 bg-blue-50"
+                    : "text-slate-700 hover:text-slate-900 hover:bg-slate-50"
+                }`}
               >
-                <Link
-                  href={ROUTES.TOUR_PACKAGES}
-                  className={`inline-flex items-center gap-1 px-3 py-2 text-sm font-semibold transition-colors rounded-md ${
-                    pathname?.startsWith(ROUTES.TOUR_PACKAGES)
-                      ? "text-blue-700 bg-blue-50"
-                      : "text-slate-700 hover:text-slate-900 hover:bg-slate-50"
-                  }`}
-                  aria-haspopup="menu"
-                  aria-expanded={openDesktopMenu === "tour"}
-                >
-                  Tour Packages
-                  <svg className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path
-                      fillRule="evenodd"
-                      d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </Link>
-
-                {openDesktopMenu === "tour" && (
-                  <div
-                    className="absolute left-1/2 top-full mt-2 w-[min(720px,calc(100vw-2rem))] -translate-x-1/2 rounded-2xl bg-white p-4 ring-1 ring-slate-900/10 shadow-lg"
-                    role="menu"
-                    aria-label="Tour Packages"
-                    onMouseEnter={() => setOpenDesktopMenu("tour")}
-                    onMouseLeave={() => setOpenDesktopMenu(null)}
-                  >
-                    <div className="grid grid-cols-12 gap-4">
-                      <div className="col-span-7 rounded-xl bg-slate-50 p-4 ring-1 ring-slate-900/10">
-                        <div className="text-xs font-semibold tracking-wide text-slate-500">Browse</div>
-                        <div className="mt-2 grid gap-2">
-                          {tourMenu.primary.map((item) => (
-                            <Link
-                              key={item.href}
-                              href={item.href}
-                              className="rounded-xl bg-white px-4 py-3 ring-1 ring-slate-900/10 hover:bg-slate-50 transition-colors"
-                              role="menuitem"
-                              onClick={() => setOpenDesktopMenu(null)}
-                            >
-                              <div className="text-sm font-semibold text-slate-900">{item.label}</div>
-                              <div className="mt-0.5 text-xs text-slate-600">{item.description}</div>
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                      <div className="col-span-5 rounded-xl bg-white p-4 ring-1 ring-slate-900/10">
-                        <div className="text-xs font-semibold tracking-wide text-slate-500">Featured</div>
-                        <div className="mt-2 grid gap-2">
-                          {tourMenu.featured.map((item) => (
-                            <Link
-                              key={item.href}
-                              href={item.href}
-                              className="rounded-xl px-4 py-3 hover:bg-slate-50 transition-colors"
-                              role="menuitem"
-                              onClick={() => setOpenDesktopMenu(null)}
-                            >
-                              <div className="text-sm font-semibold text-slate-900">{item.label}</div>
-                              <div className="mt-0.5 text-xs text-slate-600">View details & request quote</div>
-                            </Link>
-                          ))}
-                        </div>
-                        <div className="mt-3">
-                          <Link
-                            href={ROUTES.BOOK_TAXI}
-                            className="inline-flex w-full items-center justify-center rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-blue-700 transition-colors"
-                            onClick={() => setOpenDesktopMenu(null)}
-                          >
-                            Get a quote
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
+                Tour Packages
+              </Link>
 
               {/* Destinations mega menu */}
               <div
@@ -328,7 +239,7 @@ export function Header() {
 
                 {openDesktopMenu === "destinations" && (
                   <div
-                    className="absolute left-1/2 top-full mt-2 w-[min(560px,calc(100vw-2rem))] -translate-x-1/2 rounded-2xl bg-white p-4 ring-1 ring-slate-900/10 shadow-lg"
+                    className="absolute left-1/2 top-full -mt-2 pt-2 w-[min(560px,calc(100vw-2rem))] -translate-x-1/2 rounded-2xl bg-white p-4 ring-1 ring-slate-900/10 shadow-lg"
                     role="menu"
                     aria-label="Destinations"
                     onMouseEnter={() => setOpenDesktopMenu("destinations")}

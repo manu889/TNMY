@@ -5,9 +5,21 @@ import { BUSINESS_INFO } from "@/lib/constants/business-info";
 import { ROUTES } from "@/lib/constants/routes";
 
 export const metadata: Metadata = {
-  title: "Taxi Pricing in Mysore | Transparent Rates | Sedan, SUV, Tempo Traveller",
+  title: "Taxi Pricing in Mysore | Transparent Rates for Outstation & Local Trips | Travels in Mysore",
   description:
-    "View transparent taxi pricing in Mysore for outstation trips, local sightseeing and airport transfers. Get an instant quote on WhatsApp.",
+    "View transparent taxi pricing in Mysore for outstation trips to Coorg, Ooty, Wayanad, Bangalore. Sedan, SUV, Tempo Traveller rates. Local sightseeing packages 4/8/12 hours. Airport transfer pricing. No hidden charges. Get instant quote on WhatsApp. Starting ₹13/km for outstation, ₹1,800 for local packages.",
+  keywords: [
+    "taxi pricing mysore",
+    "mysore taxi rates",
+    "outstation taxi fare mysore",
+    "mysore to coorg taxi price",
+    "mysore to ooty cab fare",
+    "local taxi charges mysore",
+    "airport taxi rate mysore",
+    "sedan taxi price mysore",
+    "suv taxi fare mysore",
+    "tempo traveller cost mysore"
+  ],
   alternates: { canonical: "/pricing/" },
 };
 

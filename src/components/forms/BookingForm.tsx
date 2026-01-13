@@ -29,47 +29,24 @@ export function BookingForm({ layout = 'vertical' }: BookingFormProps) {
   const isOutstation = formData.serviceType === 'outstation';
   const isLocal = formData.serviceType === 'local';
   const isAirport = formData.serviceType === 'airport';
-  const isTempo = formData.serviceType === 'tempo';
-  const isTour = formData.serviceType === 'tour';
+  const isDropToAirport = formData.airportDirection === 'to-airport';
+  const isPickupFromAirport = formData.airportDirection === 'from-airport';
 
-  const passengerOptions = isTempo
-    ? [
-        { value: '8-11', label: '8-11 Passengers' },
-        { value: '12-17', label: '12-17 Passengers' },
-        { value: '18+', label: '18+ Passengers' },
-      ]
-    : [
-        { value: '1', label: '1 Passenger' },
-        { value: '2', label: '2 Passengers' },
-        { value: '3', label: '3 Passengers' },
-        { value: '4', label: '4 Passengers' },
-        { value: '5-7', label: '5-7 Passengers' },
-        { value: '8+', label: '8+ Passengers' },
-      ];
-
-  const vehicleOptions = isTempo
-    ? [
-        { value: 'tempo', label: 'Tempo Traveller (12-17 Seater)' },
-        { value: 'bus', label: 'Bus (20+ Seater)' },
-      ]
-    : [
-        { value: 'sedan', label: 'Sedan (4 Seater)' },
-        { value: 'suv', label: 'SUV (7 Seater)' },
-        ...(isTour ? [{ value: 'tempo', label: 'Tempo Traveller (12-17 Seater)' }] : []),
-      ];
-
-  const tourPackageLabels: Record<string, string> = {
-    'mysore-one-day-tour': 'Mysore One Day Tour',
-    'mysore-to-coorg': 'Mysore to Coorg',
-    'mysore-to-ooty': 'Mysore to Ooty',
-    'mysore-to-wayanad': 'Mysore to Wayanad',
+  // Vehicle capacity mapping - passenger count is determined by vehicle type
+  const vehicleCapacity: Record<string, string> = {
+    sedan: '4',
+    suv: '7',
   };
+
+  const vehicleOptions = [
+    { value: 'sedan', label: 'Sedan (4 Seater)' },
+    { value: 'suv', label: 'SUV (7 Seater)' },
+  ];
+
+  const tourPackageLabels: Record<string, string> = {};
 
   const setServiceType = (nextService: string) => {
     setFormData((prev) => {
-      if (nextService === 'tempo') {
-        return { ...prev, serviceType: nextService, vehicle: 'tempo', passengers: '12-17', tripType: 'oneway' };
-      }
       if (nextService === 'local') {
         return { ...prev, serviceType: nextService, vehicle: prev.vehicle === 'bus' ? 'suv' : prev.vehicle, localPackage: '8-hours' };
       }
@@ -77,12 +54,9 @@ export function BookingForm({ layout = 'vertical' }: BookingFormProps) {
         return {
           ...prev,
           serviceType: nextService,
-          vehicle: prev.vehicle === 'bus' || prev.vehicle === 'tempo' ? 'suv' : prev.vehicle,
+          vehicle: prev.vehicle === 'bus' ? 'suv' : prev.vehicle,
           airportDirection: 'to-airport',
         };
-      }
-      if (nextService === 'tour') {
-        return { ...prev, serviceType: nextService, tourPackage: 'mysore-one-day-tour' };
       }
       return { ...prev, serviceType: nextService, vehicle: prev.vehicle === 'bus' ? 'suv' : prev.vehicle };
     });
@@ -95,8 +69,6 @@ export function BookingForm({ layout = 'vertical' }: BookingFormProps) {
       outstation: "Outstation",
       local: "Local Sightseeing",
       airport: "Airport Transfer",
-      tempo: "Tempo Traveller",
-      tour: "Tour Package",
     };
 
     const tripLabels: Record<string, string> = {
@@ -107,7 +79,6 @@ export function BookingForm({ layout = 'vertical' }: BookingFormProps) {
     const vehicleLabels: Record<string, string> = {
       sedan: "Sedan (4 seater)",
       suv: "SUV (7 seater)",
-      tempo: "Tempo Traveller (12-17 seater)",
       bus: "Bus (20+ seater)",
     };
 
@@ -120,16 +91,16 @@ export function BookingForm({ layout = 'vertical' }: BookingFormProps) {
 
     addLine("Service", serviceLabels[formData.serviceType] ?? formData.serviceType);
 
-    if (isOutstation || isTempo) {
+    if (isOutstation) {
       addLine("Trip Type", tripLabels[formData.tripType] ?? formData.tripType);
     }
 
     addLine("Name", formData.name);
     addLine("Phone", formData.phone);
-
-    if (isTour) {
-      addLine("Package", tourPackageLabels[formData.tourPackage] ?? formData.tourPackage);
-    }
+    
+    // Auto-populate passenger count based on selected vehicle
+    const passengers = vehicleCapacity[formData.vehicle] || formData.passengers;
+    addLine("Passengers", passengers);
 
     if (isAirport) {
       addLine("Direction", formData.airportDirection === 'to-airport' ? 'Drop to Airport' : 'Pickup from Airport');
@@ -138,10 +109,8 @@ export function BookingForm({ layout = 'vertical' }: BookingFormProps) {
       addLine("Drop", formData.drop);
     } else if (isLocal) {
       addLine("Pickup", formData.pickup);
-      addLine("Package", formData.localPackage === '4-hours' ? '4 Hours (Half Day)' : '8 Hours (Full Day)');
+      addLine("Package", formData.localPackage === '4-hours' ? '4 Hours / 40 km' : formData.localPackage === '8-hours' ? '8 Hours / 80 km' : '12 Hours / 120 km');
       addLine("Coverage", "Mysore city limits");
-    } else if (isTour) {
-      addLine("Pickup", formData.pickup);
     } else {
       addLine("From", formData.pickup);
       addLine("To", formData.drop);
@@ -150,11 +119,10 @@ export function BookingForm({ layout = 'vertical' }: BookingFormProps) {
     addLine("Depart Date", formData.departDate);
     addLine("Depart Time", formData.departTime);
 
-    if ((isOutstation || isTempo) && formData.tripType === 'roundtrip') {
+    if (isOutstation && formData.tripType === 'roundtrip') {
       addLine("Return Date", formData.returnDate);
     }
 
-    addLine("Passengers", formData.passengers);
     addLine("Vehicle", vehicleLabels[formData.vehicle] ?? formData.vehicle);
 
     const message = lines.join("\n");
@@ -188,8 +156,8 @@ export function BookingForm({ layout = 'vertical' }: BookingFormProps) {
                 onClick={() => setFormData((prev) => ({ ...prev, serviceType: 'outstation', tripType: 'oneway' }))}
                 className={`rounded-lg px-3 py-2 text-sm font-semibold transition-colors ${
                   formData.serviceType === 'outstation' && formData.tripType === 'oneway'
-                    ? 'bg-white text-slate-900 ring-1 ring-slate-900/10'
-                    : 'text-slate-700 hover:bg-white/70'
+                    ? 'bg-blue-600 text-white ring-1 ring-blue-600'
+                    : 'text-slate-700 hover:bg-slate-100'
                 }`}
               >
                 One Way
@@ -199,8 +167,8 @@ export function BookingForm({ layout = 'vertical' }: BookingFormProps) {
                 onClick={() => setFormData((prev) => ({ ...prev, serviceType: 'outstation', tripType: 'roundtrip' }))}
                 className={`rounded-lg px-3 py-2 text-sm font-semibold transition-colors ${
                   formData.serviceType === 'outstation' && formData.tripType === 'roundtrip'
-                    ? 'bg-white text-slate-900 ring-1 ring-slate-900/10'
-                    : 'text-slate-700 hover:bg-white/70'
+                    ? 'bg-blue-600 text-white ring-1 ring-blue-600'
+                    : 'text-slate-700 hover:bg-slate-100'
                 }`}
               >
                 Round Trip
@@ -217,8 +185,8 @@ export function BookingForm({ layout = 'vertical' }: BookingFormProps) {
                 }
                 className={`rounded-lg px-3 py-2 text-sm font-semibold transition-colors ${
                   formData.serviceType === 'local'
-                    ? 'bg-white text-slate-900 ring-1 ring-slate-900/10'
-                    : 'text-slate-700 hover:bg-white/70'
+                    ? 'bg-blue-600 text-white ring-1 ring-blue-600'
+                    : 'text-slate-700 hover:bg-slate-100'
                 }`}
               >
                 Local
@@ -235,8 +203,8 @@ export function BookingForm({ layout = 'vertical' }: BookingFormProps) {
                 }
                 className={`rounded-lg px-3 py-2 text-sm font-semibold transition-colors ${
                   formData.serviceType === 'airport'
-                    ? 'bg-white text-slate-900 ring-1 ring-slate-900/10'
-                    : 'text-slate-700 hover:bg-white/70'
+                    ? 'bg-blue-600 text-white ring-1 ring-blue-600'
+                    : 'text-slate-700 hover:bg-slate-100'
                 }`}
               >
                 Airport
@@ -266,10 +234,42 @@ export function BookingForm({ layout = 'vertical' }: BookingFormProps) {
                   className="w-full px-3 py-2.5 border border-slate-300 rounded-lg bg-white text-slate-900 focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 outline-none transition"
                   required
                 >
-                  <option value="4-hours">4 Hours (Half Day)</option>
-                  <option value="8-hours">8 Hours (Full Day)</option>
+                  <option value="4-hours">4 Hours / 40 km</option>
+                  <option value="8-hours">8 Hours / 80 km</option>
+                  <option value="12-hours">12 Hours / 120 km</option>
                 </select>
               </div>
+            ) : formData.serviceType === 'airport' ? (
+              <>
+                {isDropToAirport ? (
+                  <div className="md:col-span-3">
+                    <label className="block text-xs font-semibold tracking-wide text-slate-600 mb-2">Airport *</label>
+                    <select
+                      value={formData.airportName}
+                      onChange={(e) => setFormData({ ...formData, airportName: e.target.value })}
+                      className="w-full px-3 py-2.5 border border-slate-300 rounded-lg bg-white text-slate-900 focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 outline-none transition"
+                      required
+                    >
+                      <option value="Bengaluru (BLR)">Bengaluru (BLR)</option>
+                      <option value="Mysore (MYQ)">Mysore (MYQ)</option>
+                      <option value="Mangalore (IXE)">Mangalore (IXE)</option>
+                      <option value="Kannur (CNN)">Kannur (CNN)</option>
+                    </select>
+                  </div>
+                ) : (
+                  <div className="md:col-span-3">
+                    <label className="block text-xs font-semibold tracking-wide text-slate-600 mb-2">Destination *</label>
+                    <input
+                      type="text"
+                      value={formData.drop}
+                      onChange={(e) => setFormData({ ...formData, drop: e.target.value })}
+                      placeholder="Enter destination"
+                      className="w-full px-3 py-2.5 border border-slate-300 rounded-lg bg-white text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 outline-none transition"
+                      required
+                    />
+                  </div>
+                )}
+              </>
             ) : (
               <div className="md:col-span-3">
                 <label className="block text-xs font-semibold tracking-wide text-slate-600 mb-2">To</label>
@@ -277,7 +277,7 @@ export function BookingForm({ layout = 'vertical' }: BookingFormProps) {
                   type="text"
                   value={formData.drop}
                   onChange={(e) => setFormData({ ...formData, drop: e.target.value })}
-                  placeholder={formData.serviceType === 'airport' ? 'Airport / destination' : 'Drop location'}
+                  placeholder="Drop location"
                   className="w-full px-3 py-2.5 border border-slate-300 rounded-lg bg-white text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 outline-none transition"
                   required
                 />
@@ -338,22 +338,6 @@ export function BookingForm({ layout = 'vertical' }: BookingFormProps) {
                 className="w-full px-3 py-2.5 border border-slate-300 rounded-lg bg-white text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 outline-none transition"
                 required
               />
-            </div>
-
-            <div className="md:col-span-2">
-              <label className="block text-xs font-semibold tracking-wide text-slate-600 mb-2">Passengers *</label>
-              <select
-                value={formData.passengers}
-                onChange={(e) => setFormData({ ...formData, passengers: e.target.value })}
-                className="w-full px-3 py-2.5 border border-slate-300 rounded-lg bg-white text-slate-900 focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 outline-none transition"
-                required
-              >
-                {passengerOptions.map((o) => (
-                  <option key={o.value} value={o.value}>
-                    {o.label}
-                  </option>
-                ))}
-              </select>
             </div>
 
             <div className="md:col-span-2">
@@ -421,13 +405,11 @@ export function BookingForm({ layout = 'vertical' }: BookingFormProps) {
               <span className="text-xs font-semibold text-slate-500">No hidden charges</span>
             </div>
             <div className="rounded-xl bg-slate-50 p-1 ring-1 ring-slate-900/10">
-              <div className="grid grid-cols-2 sm:grid-cols-5 gap-1">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-1">
                 {[
                   { key: 'outstation', label: 'Outstation' },
                   { key: 'local', label: 'Local' },
                   { key: 'airport', label: 'Airport' },
-                  { key: 'tempo', label: 'Tempo' },
-                  { key: 'tour', label: 'Tour' },
                 ].map((s) => (
                   <button
                     key={s.key}
@@ -435,8 +417,8 @@ export function BookingForm({ layout = 'vertical' }: BookingFormProps) {
                     onClick={() => setServiceType(s.key)}
                     className={`rounded-lg px-2 py-2 text-xs font-semibold transition-colors ${
                       formData.serviceType === s.key
-                        ? 'bg-white text-slate-900 ring-1 ring-slate-900/10'
-                        : 'text-slate-700 hover:bg-white/70'
+                        ? 'bg-blue-600 text-white ring-1 ring-blue-600'
+                        : 'text-slate-700 hover:bg-slate-100'
                     }`}
                     aria-pressed={formData.serviceType === s.key}
                   >
@@ -474,8 +456,8 @@ export function BookingForm({ layout = 'vertical' }: BookingFormProps) {
             </div>
           </div>
 
-          {/* Trip Type (Outstation/Tempo only) */}
-          {(isOutstation || isTempo) && (
+          {/* Trip Type (Outstation only) */}
+          {isOutstation && (
             <div>
               <label className="block text-xs font-semibold tracking-wide text-slate-600 mb-2">Trip Type</label>
               <div className="rounded-xl bg-slate-50 p-1 ring-1 ring-slate-900/10">
@@ -546,71 +528,112 @@ export function BookingForm({ layout = 'vertical' }: BookingFormProps) {
                 className="w-full px-3 py-2 border border-slate-300 rounded-lg bg-white text-slate-900 focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 outline-none transition"
                 required
               >
-                <option value="4-hours">4 Hours (Half Day)</option>
-                <option value="8-hours">8 Hours (Full Day)</option>
+                <option value="4-hours">4 Hours / 40 km</option>
+                <option value="8-hours">8 Hours / 80 km</option>
+                <option value="12-hours">12 Hours / 120 km</option>
               </select>
             </div>
           )}
 
-          {isTour && (
-            <div>
-              <label className="block text-xs font-semibold tracking-wide text-slate-600 mb-2">Tour Package *</label>
-              <select
-                value={formData.tourPackage}
-                onChange={(e) => setFormData({ ...formData, tourPackage: e.target.value })}
-                className="w-full px-3 py-2 border border-slate-300 rounded-lg bg-white text-slate-900 focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 outline-none transition"
-                required
-              >
-                <option value="mysore-one-day-tour">Mysore One Day Tour</option>
-                <option value="mysore-to-coorg">Mysore to Coorg</option>
-                <option value="mysore-to-ooty">Mysore to Ooty</option>
-                <option value="mysore-to-wayanad">Mysore to Wayanad</option>
-              </select>
-            </div>
-          )}
+          {/* Trip Details - Only for non-airport services */}
+          {!isAirport && (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+              {isLocal ? (
+                <div>
+                  <label className="block text-xs font-semibold tracking-wide text-slate-600 mb-2">Pickup Location</label>
+                  <input
+                    type="text"
+                    value="Mysore"
+                    disabled
+                    className="w-full px-3 py-2 border border-slate-300 rounded-lg bg-slate-100 text-slate-900 focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 outline-none transition cursor-not-allowed"
+                  />
+                  <p className="mt-1 text-xs text-slate-500">Service available within Mysore city limits</p>
+                </div>
+              ) : (
+                <div>
+                  <label className="block text-xs font-semibold tracking-wide text-slate-600 mb-2">Pickup *</label>
+                  <input
+                    type="text"
+                    value={formData.pickup}
+                    onChange={(e) => setFormData({ ...formData, pickup: e.target.value })}
+                    placeholder="Pickup location"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-lg bg-white text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 outline-none transition"
+                    required
+                  />
+                </div>
+              )}
 
-          {/* Trip Details */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-            <div>
-              <label className="block text-xs font-semibold tracking-wide text-slate-600 mb-2">Pickup *</label>
-              <input
-                type="text"
-                value={formData.pickup}
-                onChange={(e) => setFormData({ ...formData, pickup: e.target.value })}
-                placeholder="Pickup location"
-                className="w-full px-3 py-2 border border-slate-300 rounded-lg bg-white text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 outline-none transition"
-                required
-              />
-            </div>
+              {isLocal ? (
+                <div className="hidden md:block" />
+              ) : (
+                <div>
+                  <label className="block text-xs font-semibold tracking-wide text-slate-600 mb-2">Drop *</label>
+                  <input
+                    type="text"
+                    value={formData.drop}
+                    onChange={(e) => setFormData({ ...formData, drop: e.target.value })}
+                    placeholder="Drop location"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-lg bg-white text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 outline-none transition"
+                    required
+                  />
+                </div>
+              )}
 
-            {isLocal ? (
-              <div className="hidden md:block" />
-            ) : (
               <div>
-                <label className="block text-xs font-semibold tracking-wide text-slate-600 mb-2">{isTour ? 'Drop (optional)' : 'Drop *'}</label>
+                <label className="block text-xs font-semibold tracking-wide text-slate-600 mb-2">Date *</label>
                 <input
-                  type="text"
-                  value={formData.drop}
-                  onChange={(e) => setFormData({ ...formData, drop: e.target.value })}
-                  placeholder={isAirport ? 'Airport / destination' : 'Drop location'}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-lg bg-white text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 outline-none transition"
-                  required={!isTour}
+                  type="date"
+                  value={formData.departDate}
+                  onChange={(e) => setFormData({ ...formData, departDate: e.target.value })}
+                  min={new Date().toISOString().split('T')[0]}
+                  className="w-full px-3 py-2 border border-slate-300 rounded-lg bg-white text-slate-900 focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 outline-none transition"
+                  required
                 />
               </div>
-            )}
-
-            <div>
-              <label className="block text-xs font-semibold tracking-wide text-slate-600 mb-2">Date *</label>
-              <input
-                type="date"
-                value={formData.departDate}
-                onChange={(e) => setFormData({ ...formData, departDate: e.target.value })}
-                min={new Date().toISOString().split('T')[0]}
-                className="w-full px-3 py-2 border border-slate-300 rounded-lg bg-white text-slate-900 focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 outline-none transition"
-                required
-              />
             </div>
-          </div>
+          )}
+
+          {/* Airport-specific fields */}
+          {isAirport && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {isDropToAirport ? (
+                <div>
+                  <label className="block text-xs font-semibold tracking-wide text-slate-600 mb-2">Pickup *</label>
+                  <input
+                    type="text"
+                    value={formData.pickup}
+                    onChange={(e) => setFormData({ ...formData, pickup: e.target.value })}
+                    placeholder="Pickup location"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-lg bg-white text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 outline-none transition"
+                    required
+                  />
+                </div>
+              ) : (
+                <div>
+                  <label className="block text-xs font-semibold tracking-wide text-slate-600 mb-2">Destination *</label>
+                  <input
+                    type="text"
+                    value={formData.drop}
+                    onChange={(e) => setFormData({ ...formData, drop: e.target.value })}
+                    placeholder="Enter destination"
+                    className="w-full px-3 py-2 border border-slate-300 rounded-lg bg-white text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 outline-none transition"
+                    required
+                  />
+                </div>
+              )}
+              <div>
+                <label className="block text-xs font-semibold tracking-wide text-slate-600 mb-2">Date *</label>
+                <input
+                  type="date"
+                  value={formData.departDate}
+                  onChange={(e) => setFormData({ ...formData, departDate: e.target.value })}
+                  min={new Date().toISOString().split('T')[0]}
+                  className="w-full px-3 py-2 border border-slate-300 rounded-lg bg-white text-slate-900 focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 outline-none transition"
+                  required
+                />
+              </div>
+            </div>
+          )}
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
             <div>
@@ -623,7 +646,7 @@ export function BookingForm({ layout = 'vertical' }: BookingFormProps) {
               />
             </div>
 
-            {(isOutstation || isTempo) && formData.tripType === 'roundtrip' ? (
+            {(isOutstation) && formData.tripType === 'roundtrip' ? (
               <div>
                 <label className="block text-xs font-semibold tracking-wide text-slate-600 mb-2">Return Date *</label>
                 <input
@@ -642,29 +665,15 @@ export function BookingForm({ layout = 'vertical' }: BookingFormProps) {
             <div className="hidden md:block" />
           </div>
 
-          {/* Passengers & Vehicle */}
+          {/* Vehicle & Passengers */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-semibold tracking-wide text-slate-600 mb-2">Passengers *</label>
-              <select
-                value={formData.passengers}
-                onChange={(e) => setFormData({ ...formData, passengers: e.target.value })}
-                className="w-full px-3 py-2 border border-slate-300 rounded-lg bg-white text-slate-900 focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 outline-none transition"
-                required
-              >
-                {passengerOptions.map((o) => (
-                  <option key={o.value} value={o.value}>
-                    {o.label}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <label className="block text-xs font-semibold tracking-wide text-slate-600 mb-2">Vehicle Type</label>
+              <label className="block text-xs font-semibold tracking-wide text-slate-600 mb-2">Vehicle Type *</label>
               <select
                 value={formData.vehicle}
                 onChange={(e) => setFormData({ ...formData, vehicle: e.target.value })}
                 className="w-full px-3 py-2 border border-slate-300 rounded-lg bg-white text-slate-900 focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 outline-none transition"
+                required
               >
                 {vehicleOptions.map((o) => (
                   <option key={o.value} value={o.value}>
@@ -672,6 +681,16 @@ export function BookingForm({ layout = 'vertical' }: BookingFormProps) {
                   </option>
                 ))}
               </select>
+            </div>
+            <div>
+              <label className="block text-xs font-semibold tracking-wide text-slate-600 mb-2">Passengers</label>
+              <input
+                type="text"
+                value={vehicleCapacity[formData.vehicle] || '4'}
+                disabled
+                className="w-full px-3 py-2 border border-slate-300 rounded-lg bg-slate-100 text-slate-900 focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 outline-none transition cursor-not-allowed"
+              />
+              <p className="mt-1 text-xs text-slate-500">Auto-selected based on vehicle type</p>
             </div>
           </div>
 

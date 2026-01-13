@@ -152,12 +152,12 @@ export default function Home() {
   ];
 
   const destinations = [
-    { name: "Coorg", image: "/images/tours/Coorg.jpg" },
-    { name: "Ooty", image: "/images/tours/5.jpg" },
-    { name: "Mysore", image: "/images/tours/Mysore_Tour_Package.jpg" },
-    { name: "Wayanad", image: "/images/tours/6.jpg" },
-    { name: "Bangalore", image: "/images/tours/7.jpg" },
-    { name: "Kodaikanal", image: "/images/tours/8.jpg" },
+    { name: "Coorg", image: "/images/tours/Coorg.jpg", href: ROUTES.DEST_COORG },
+    { name: "Ooty", image: "/images/tours/5.jpg", href: ROUTES.DEST_OOTY },
+    { name: "Mysore", image: "/images/tours/Mysore_Tour_Package.jpg", href: ROUTES.DEST_MYSORE },
+    { name: "Wayanad", image: "/images/tours/6.jpg", href: ROUTES.DEST_WAYANAD },
+    { name: "Bangalore", image: "/images/tours/7.jpg", href: ROUTES.DEST_BANGALORE },
+    { name: "Kodaikanal", image: "/images/tours/8.jpg", href: ROUTES.DEST_KODAIKANAL },
   ];
 
   const testimonials = [
@@ -283,8 +283,8 @@ export default function Home() {
                         <Link key={v.id} href={v.href} className="block">
                           <div className="group rounded-2xl border border-slate-200 bg-white p-6 hover:shadow-lg transition-shadow">
                             <div className="relative overflow-hidden rounded-xl bg-slate-50 ring-1 ring-slate-900/10">
-                              <div className="relative h-28">
-                                <Image src={v.image} alt={v.name} fill className="object-contain p-3" />
+                              <div className="relative h-48">
+                                <Image src={v.image} alt={`${v.name} taxi service in Mysore - ${v.desc} available for outstation trips and local sightseeing`} fill className="object-contain p-3" />
                               </div>
                             </div>
                             <div className="mt-4 flex items-start justify-between gap-3">
@@ -317,9 +317,9 @@ export default function Home() {
 
                     <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
                       {destinations.map((dest) => (
-                        <Link key={dest.name} href="#" className="group">
+                        <Link key={dest.name} href={dest.href} className="group">
                           <div className="relative aspect-square rounded-full overflow-hidden ring-4 ring-slate-200 group-hover:ring-blue-400 transition-all">
-                            <Image src={dest.image} alt={dest.name} fill className="object-cover group-hover:scale-110 transition-transform duration-300" />
+                            <Image src={dest.image} alt={`${dest.name} taxi service from Mysore - Travels in Mysore to ${dest.name}`} fill className="object-cover group-hover:scale-110 transition-transform duration-300" />
                             <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors flex items-center justify-center">
                               <span className="text-white font-bold text-center px-2">{dest.name}</span>
                             </div>
@@ -385,7 +385,7 @@ export default function Home() {
                         <Link key={p.href} href={p.href} className="block">
                           <div className="group overflow-hidden rounded-2xl border border-slate-200 bg-white hover:shadow-lg transition-shadow">
                             <div className="relative h-44">
-                              <Image src={p.image} alt={p.title} fill className="object-cover" />
+                              <Image src={p.image} alt={`${p.title} tour package from Mysore - ${p.meta} trip with taxi services in Mysore`} fill className="object-cover" />
                               <div className="absolute inset-0 bg-linear-to-t from-slate-900/55 via-slate-900/10 to-transparent" />
                               <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between gap-3">
                                 <div className="min-w-0">

@@ -5,9 +5,21 @@ import { BUSINESS_INFO } from "@/lib/constants/business-info";
 import { ROUTES } from "@/lib/constants/routes";
 
 export const metadata: Metadata = {
-  title: "Customer Reviews | Taxi & Tour Service in Mysore",
+  title: "Customer Reviews & Testimonials | Best Taxi Service in Mysore | 4.9★ Rated | MM Mysore Travels",
   description:
-    "Read customer feedback for our taxi and tour services in Mysore. Rated 4.9 with 300+ reviews. Book instantly on WhatsApp.",
+    "Read 349+ customer reviews for MM Mysore Travels. Rated 4.9/5 stars by travelers for taxi services in Mysore, outstation trips to Coorg, Ooty, Wayanad. Verified testimonials from satisfied customers. Professional drivers, clean vehicles, transparent pricing. Book with confidence. Trusted travel agency in Mysore since 2009.",
+  keywords: [
+    "mysore taxi reviews",
+    "mysore travels testimonials",
+    "taxi service mysore customer feedback",
+    "best taxi service mysore reviews",
+    "mysore outstation taxi ratings",
+    "mm mysore travels reviews",
+    "trusted taxi service mysore",
+    "mysore travel agency reviews",
+    "taxi services in mysore ratings",
+    "mysore tour package reviews"
+  ],
   alternates: { canonical: "/reviews/" },
 };
 

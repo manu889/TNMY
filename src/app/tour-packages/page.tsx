@@ -6,7 +6,9 @@ import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ROUTES } from "@/lib/constants/routes";
 import { useState } from "react";
 
-// SEO metadata moved to layout or handled differently for client component
+// Note: Metadata for this page is set in layout.tsx or via Next.js conventions
+// Since this is a client component, metadata should be in a parent server component
+
 const tourPackages = [
   {
     name: "Mysore One Day Tour",
