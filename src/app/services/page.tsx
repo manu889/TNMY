@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Taxi Services in Mysore | Travel Agency Mysore | MM Mysore Travels",
-  description: "Leading taxi services in Mysore - Outstation cabs, local sightseeing, airport transfers, tour packages, corporate transport. Karnataka Tourism approved. 4.9★ rated travel agency. Book 24/7.",
+  description: "Leading taxi services in Mysore - Outstation cabs, local sightseeing, airport transfers, tour packages, corporate transport. Highly rated travel agency. Book 24/7.",
   keywords: [
     "top travels in mysore",
     "best travel agency mysore",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/services" },
   openGraph: {
     title: "Taxi Services in Mysore - MM Mysore Travels",
-    description: "Leading travel agency in Mysore with 15+ years experience. 4.9★ rated taxi services.",
+    description: "Leading travel agency in Mysore with 11+ years experience. 4.9★ rated taxi services.",
     type: "website",
   }
 };
@@ -50,7 +50,7 @@ export default function ServicesPage() {
       title: "Airport Transfer",
       desc: "Hassle-free pickup & drop for Bangalore, Mysore airports. On-time service guaranteed.",
       features: ["Real-time tracking", "Flight monitoring", "Meet & greet service", "24/7 availability"],
-      price: "Starting from ₹1,800",
+      price: "Starting from ₹2,800",
       link: ROUTES.AIRPORT_TRANSFER
     },
     {
@@ -84,7 +84,7 @@ export default function ServicesPage() {
         
         <div className="bg-linear-to-r from-blue-600 to-blue-800 rounded-2xl p-8 md:p-12 mb-10 text-center text-white">
           <div className="inline-flex items-center rounded-full bg-white/20 px-4 py-1.5 text-sm font-semibold backdrop-blur-sm mb-4">
-            Top Travels in Mysore • Karnataka Tourism Approved • 15+ Years • 4.9★ Rated
+            Top Travels in Mysore • 11+ Years Experience • Highly Rated
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Leading Taxi Services in Mysore

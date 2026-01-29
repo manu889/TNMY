@@ -7,8 +7,8 @@ import Link from "next/link";
 import { ROUTES } from "@/lib/constants/routes";
 
 export const metadata: Metadata = {
-  title: "Mysore to Coorg Taxi | ₹4,500 | One Way & Round Trip Cab Booking",
-  description: "Book Mysore to Coorg cab at ₹4,500. 120 km scenic drive through coffee plantations. Visit Abbey Falls, Raja's Seat, Dubare. Professional drivers. 24/7 available.",
+  title: "Mysore to Coorg Taxi | Starting from ₹4,500 | One Way & Round Trip Cab Booking",
+  description: "Book Mysore to Coorg cab starting from ₹4,500. 120 km scenic drive through coffee plantations. Visit Abbey Falls, Raja's Seat, Dubare. Professional drivers. 24/7 available.",
   keywords: ["mysore to coorg taxi", "mysore to coorg cab", "coorg taxi from mysore", "mysore coorg car rental"],
   alternates: {
     canonical: "/mysore-to-coorg/",
@@ -36,7 +36,7 @@ const tourPackage = createTourPackageSchema({
 const faqs = createFAQSchema([
   {
     question: "How much does Mysore to Coorg taxi cost?",
-    answer: "Mysore to Coorg taxi starts at ₹4,500 for sedan (one way). Round trip packages are available. SUV and Tempo Traveller options also available at competitive rates."
+    answer: "Mysore to Coorg taxi starting from ₹4,500 for sedan (one way). Round trip packages are available. SUV and Tempo Traveller options also available at competitive rates."
   },
   {
     question: "How far is Coorg from Mysore?",

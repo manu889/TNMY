@@ -36,11 +36,17 @@ export function BookingForm({ layout = 'vertical' }: BookingFormProps) {
   const vehicleCapacity: Record<string, string> = {
     sedan: '4',
     suv: '7',
+    innova: '7',
+    tempo: '13',
+    urbania: '16',
   };
 
   const vehicleOptions = [
     { value: 'sedan', label: 'Sedan (4 Seater)' },
     { value: 'suv', label: 'SUV (7 Seater)' },
+    { value: 'innova', label: 'Innova Crysta - Luxury (7 Seater)' },
+    { value: 'tempo', label: 'Tempo Traveller (13 Seater)' },
+    { value: 'urbania', label: 'Urbania (16 Seater)' },
   ];
 
   const tourPackageLabels: Record<string, string> = {};
@@ -79,6 +85,9 @@ export function BookingForm({ layout = 'vertical' }: BookingFormProps) {
     const vehicleLabels: Record<string, string> = {
       sedan: "Sedan (4 seater)",
       suv: "SUV (7 seater)",
+      innova: "Innova Crysta - Luxury (7 seater)",
+      tempo: "Tempo Traveller (13 seater)",
+      urbania: "Urbania (16 seater)",
       bus: "Bus (20+ seater)",
     };
 
@@ -156,7 +165,7 @@ export function BookingForm({ layout = 'vertical' }: BookingFormProps) {
                 onClick={() => setFormData((prev) => ({ ...prev, serviceType: 'outstation', tripType: 'oneway' }))}
                 className={`rounded-lg px-3 py-2 text-sm font-semibold transition-colors ${
                   formData.serviceType === 'outstation' && formData.tripType === 'oneway'
-                    ? 'bg-blue-600 text-white ring-1 ring-blue-600'
+                    ? 'bg-[#FF7444] text-white ring-1 ring-[#FF7444]'
                     : 'text-slate-700 hover:bg-slate-100'
                 }`}
               >
@@ -167,7 +176,7 @@ export function BookingForm({ layout = 'vertical' }: BookingFormProps) {
                 onClick={() => setFormData((prev) => ({ ...prev, serviceType: 'outstation', tripType: 'roundtrip' }))}
                 className={`rounded-lg px-3 py-2 text-sm font-semibold transition-colors ${
                   formData.serviceType === 'outstation' && formData.tripType === 'roundtrip'
-                    ? 'bg-blue-600 text-white ring-1 ring-blue-600'
+                    ? 'bg-[#FF7444] text-white ring-1 ring-[#FF7444]'
                     : 'text-slate-700 hover:bg-slate-100'
                 }`}
               >
@@ -185,7 +194,7 @@ export function BookingForm({ layout = 'vertical' }: BookingFormProps) {
                 }
                 className={`rounded-lg px-3 py-2 text-sm font-semibold transition-colors ${
                   formData.serviceType === 'local'
-                    ? 'bg-blue-600 text-white ring-1 ring-blue-600'
+                    ? 'bg-[#FF7444] text-white ring-1 ring-[#FF7444]'
                     : 'text-slate-700 hover:bg-slate-100'
                 }`}
               >
@@ -203,7 +212,7 @@ export function BookingForm({ layout = 'vertical' }: BookingFormProps) {
                 }
                 className={`rounded-lg px-3 py-2 text-sm font-semibold transition-colors ${
                   formData.serviceType === 'airport'
-                    ? 'bg-blue-600 text-white ring-1 ring-blue-600'
+                    ? 'bg-[#FF7444] text-white ring-1 ring-[#FF7444]'
                     : 'text-slate-700 hover:bg-slate-100'
                 }`}
               >
@@ -417,7 +426,7 @@ export function BookingForm({ layout = 'vertical' }: BookingFormProps) {
                     onClick={() => setServiceType(s.key)}
                     className={`rounded-lg px-2 py-2 text-xs font-semibold transition-colors ${
                       formData.serviceType === s.key
-                        ? 'bg-blue-600 text-white ring-1 ring-blue-600'
+                        ? 'bg-[#FF7444] text-white ring-1 ring-[#FF7444]'
                         : 'text-slate-700 hover:bg-slate-100'
                     }`}
                     aria-pressed={formData.serviceType === s.key}
@@ -699,7 +708,7 @@ export function BookingForm({ layout = 'vertical' }: BookingFormProps) {
             type="submit"
             className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-6 rounded-lg transition-colors shadow-sm hover:shadow flex items-center justify-center"
           >
-            Send on WhatsApp
+            Book on WhatsApp
           </button>
 
           <p className="text-center text-sm text-slate-600">

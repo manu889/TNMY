@@ -23,11 +23,8 @@ function HeroImageSlider() {
   const [currentSlide, setCurrentSlide] = useState(0);
   
   const images = [
-    "/images/tours/Mysore_Tour_Package.jpg",
-    "/images/tours/Coorg_Tour_Package.jpg",
-    "/images/tours/Ooty_Tour_Package.jpg",
-    "/images/tours/Mysore.jpg",
-  ];
+    "/images/hero/mysore-palace.jpg",
+  ];  
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -55,8 +52,8 @@ function HeroImageSlider() {
           />
         </div>
       ))}
-      <div className="absolute inset-0 bg-black/20" />
-      <div className="absolute inset-0 bg-linear-to-b from-slate-900/30 via-slate-900/40 to-slate-900/50" />
+      <div className="absolute inset-0 bg-black/10" />
+      <div className="absolute inset-0 bg-linear-to-b from-slate-900/10 via-slate-900/20 to-slate-900/30" />
     </div>
   );
 }
@@ -68,7 +65,7 @@ export default function Home() {
     {
       title: "Outstation Taxi",
       desc: "Book outstation cabs from Mysore to Coorg, Ooty, Wayanad, Bangalore and more with transparent pricing.",
-      meta: "Starting from ₹13/km",
+      meta: "Starting from ₹11/km",
       href: ROUTES.OUTSTATION_TAXI,
     },
     {
@@ -104,12 +101,12 @@ export default function Home() {
   ];
 
   const fleet = [
-    { id: "sedan-dzire", name: "Dzire Sedan", href: ROUTES.FLEET_SEDAN, desc: "Comfortable 4 seater", image: "/images/vehicles/Dzire.png" },
-    { id: "suv-ertiga", name: "Ertiga SUV", href: ROUTES.FLEET_SUV, desc: "Family trips and luggage", image: "/images/vehicles/Ertiga.png" },
-    { id: "suv-innova", name: "Innova Crysta", href: ROUTES.FLEET_SUV, desc: "7-seater premium comfort", image: "/images/vehicles/Innova.png" },
-    { id: "sedan-etios", name: "Etios Sedan", href: ROUTES.FLEET_SEDAN, desc: "Budget-friendly sedan", image: "/images/vehicles/Etios.png" },
-    { id: "tempo", name: "Tempo Traveller", href: ROUTES.FLEET_TEMPO, desc: "Group travel 13-17 seater", image: "/images/vehicles/Tempo-Traveller.png" },
-    { id: "bus", name: "Tourist Bus", href: ROUTES.FLEET_BUS, desc: "Large groups 30+ seater", image: "/images/vehicles/Crysta.webp" },
+    { id: "sedan-dzire", name: "Dzire Sedan", href: ROUTES.FLEET_SEDAN, desc: "Comfortable 4 seater", image: "/images/vehicles/Dzire.png", price: "₹11/km" },
+    { id: "suv-ertiga", name: "Ertiga SUV", href: ROUTES.FLEET_SUV, desc: "Family trips and luggage", image: "/images/vehicles/Ertiga.png", price: "₹15/km" },
+    { id: "suv-innova", name: "Innova Crysta", href: ROUTES.FLEET_SUV, desc: "7-seater premium comfort", image: "/images/vehicles/Innova.png", price: "₹17/km" },
+    { id: "sedan-etios", name: "Etios Sedan", href: ROUTES.FLEET_SEDAN, desc: "Budget-friendly sedan", image: "/images/vehicles/Etios.png", price: "₹12/km" },
+    { id: "tempo", name: "Tempo Traveller", href: ROUTES.FLEET_TEMPO, desc: "Group travel 13-17 seater", image: "/images/vehicles/Tempo-Traveller.png", price: "₹18/km" },
+    { id: "bus", name: "Tourist Bus", href: ROUTES.FLEET_BUS, desc: "Large groups 30+ seater", image: "/images/vehicles/Crysta.webp", price: "₹30/km" },
   ];
 
   const featuredPackages = [
@@ -235,18 +232,18 @@ export default function Home() {
               <>
                 <section className="relative overflow-hidden bg-slate-900 border-b border-slate-700">
                   <HeroImageSlider />
-                  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 relative">
+                  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-14 relative">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center justify-items-center">
                       <div className="pt-2 text-center">
                         <div className="inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-slate-700 ring-1 ring-slate-900/10">
                           Travels in Mysore • Rated {BUSINESS_INFO.rating.value}/{BUSINESS_INFO.rating.max} • {BUSINESS_INFO.rating.count}+ reviews
                         </div>
-                        <h1 className="mt-6 text-4xl md:text-5xl font-bold tracking-tight text-white drop-shadow-lg">Travels in Mysore — Taxi Services in Mysore</h1>
-                        <p className="mt-4 text-lg text-white/90 leading-relaxed max-w-xl drop-shadow mx-auto">
+                        <h1 className="mt-6 text-3xl md:text-5xl font-bold tracking-tight text-white drop-shadow-lg">Travels in Mysore — Taxi Services in Mysore</h1>
+                        <p className="mt-4 text-base md:text-lg text-white/90 leading-relaxed max-w-xl drop-shadow mx-auto">
                           Book Taxi Services in Mysore for outstation trips (Coorg, Ooty, Wayanad, Bangalore), Bangalore airport transfers, and Mysore local sightseeing packages with clean vehicles, verified drivers, and transparent pricing.
                         </p>
 
-                        <div className="mt-6 space-y-3 max-w-xl mx-auto">
+                        <div className="hidden md:block mt-6 space-y-3 max-w-xl mx-auto">
                           <div className="flex items-center justify-center gap-3 text-white/95">
                             <svg className="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
                               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
@@ -259,13 +256,13 @@ export default function Home() {
                             </svg>
                             <span className="text-sm font-medium drop-shadow">Clean AC cabs for airport, outstation & local trips</span>
                           </div>
-                          <div className="flex items-center justify-center gap-3 text-white/95">
+                          <div className="hidden md:flex items-center justify-center gap-3 text-white/95">
                             <svg className="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
                               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                             </svg>
                             <span className="text-sm font-medium drop-shadow">Fixed, transparent fares (no hidden charges)</span>
                           </div>
-                          <div className="flex items-center justify-center gap-3 text-white/95">
+                          <div className="hidden md:flex items-center justify-center gap-3 text-white/95">
                             <svg className="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
                               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                             </svg>
@@ -273,15 +270,15 @@ export default function Home() {
                           </div>
                         </div>
 
-                        <div className="mt-5 inline-flex items-center gap-2 rounded-xl bg-white/90 px-4 py-2 text-sm font-semibold ring-1 ring-slate-900/10">
-                          <span className="text-blue-700">₹13/km</span>
+                        <div className="mt-5 hidden md:inline-flex items-center gap-2 rounded-xl bg-white/90 px-4 py-2 text-sm font-semibold ring-1 ring-slate-900/10">
+                          <span className="text-blue-700">₹11/km</span>
                           <span className="text-slate-700">starting outstation pricing</span>
                         </div>
 
                         <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
                           <a
                             href={`tel:${BUSINESS_INFO.phone}`}
-                            className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-blue-700 transition-colors"
+                            className="hidden md:inline-flex items-center justify-center rounded-xl bg-[#FF7444] px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-[#e85c2d] transition-colors"
                           >
                             Call {BUSINESS_INFO.phoneDisplay}
                           </a>
@@ -289,13 +286,13 @@ export default function Home() {
                             href={BUSINESS_INFO.whatsappLink}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center rounded-xl bg-emerald-600 px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-emerald-700 transition-colors"
+                            className="hidden md:inline-flex items-center justify-center rounded-xl bg-emerald-600 px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-emerald-700 transition-colors"
                           >
                             WhatsApp
                           </a>
                         </div>
 
-                        <div className="mt-10 grid grid-cols-3 gap-3 max-w-xl mx-auto">
+                        <div className="hidden md:grid mt-10 grid-cols-3 gap-3 max-w-xl mx-auto">
                           {[
                             { label: "Since", value: BUSINESS_INFO.founded },
                             { label: "Support", value: "24/7" },
@@ -331,7 +328,7 @@ export default function Home() {
                     <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                       {fleet.map((v) => (
                         <Link key={v.id} href={v.href} className="block">
-                          <div className="group rounded-2xl border border-slate-200 bg-white p-6 hover:shadow-lg transition-shadow">
+                          <div className="group rounded-2xl border border-slate-200 bg-[#E5D9B6] p-6 hover:shadow-lg transition-shadow">
                             <div className="relative overflow-hidden rounded-xl bg-slate-50 ring-1 ring-slate-900/10">
                               <div className="relative h-48">
                                 <Image src={v.image} alt={`${v.name} taxi service in Mysore - ${v.desc} available for outstation trips and local sightseeing`} fill className="object-contain p-3" />
@@ -341,6 +338,7 @@ export default function Home() {
                               <div>
                                 <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-700 transition-colors">{v.name}</h3>
                                 <p className="mt-1 text-sm text-slate-600">{v.desc}</p>
+                                <p className="mt-2 text-lg font-bold text-[#FF7444] bg-slate-50 px-4 py-2 rounded-lg inline-block">{v.price}</p>
                               </div>
                               <span className="mt-0.5 inline-flex items-center rounded-full bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-600 ring-1 ring-slate-900/10">
                                 View
@@ -407,7 +405,7 @@ export default function Home() {
                             </div>
                             <div className="mt-4 flex items-center justify-between gap-3">
                               <span className="text-sm font-semibold text-slate-900">{s.meta}</span>
-                              <span className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-3 py-2 text-xs font-semibold text-white shadow-sm group-hover:bg-blue-700 transition-colors">
+                              <span className="inline-flex items-center justify-center rounded-lg bg-[#FF7444] px-3 py-2 text-xs font-semibold text-white shadow-sm group-hover:bg-[#e85c2d] transition-colors">
                                 Explore
                               </span>
                             </div>
@@ -587,7 +585,7 @@ export default function Home() {
                       <div className="rounded-2xl border border-slate-200 bg-slate-50 p-8">
                         <h3 className="text-2xl font-bold text-slate-900">Why Choose MM Mysore Travels</h3>
                         <p className="mt-4 text-slate-700 leading-relaxed">
-                          What sets us apart as the premier travel agency in Mysore is our commitment to customer satisfaction. Our 4.9-star rating with 349+ reviews speaks volumes about our taxi services in Mysore. We offer Karnataka Tourism approved travel services with verified drivers, GPS-enabled vehicles, and comprehensive insurance coverage for your safety.
+                          What sets us apart as the premier travel agency in Mysore is our commitment to customer satisfaction. Our highly rated taxi services in Mysore are backed by verified drivers, GPS-enabled vehicles, and comprehensive insurance coverage for your safety.
                         </p>
                         <p className="mt-4 text-slate-700 leading-relaxed">
                           Our outstation taxi service from Mysore covers popular destinations like Coorg (120km), Ooty (125km), Wayanad (140km), Bangalore (145km), and Kodaikanal (370km). For local travel, we provide customized sightseeing packages covering Mysore Palace, Chamundi Hills, Brindavan Gardens, and other attractions. Corporate clients trust our taxi services in Mysore for reliable business travel with monthly billing options.
@@ -621,7 +619,7 @@ export default function Home() {
                         Experience the difference with Karnataka&apos;s most trusted travel agency. Our taxi services in Mysore combine reliability, comfort, and affordability. Whether it&apos;s a local trip or an outstation adventure, MM Mysore Travels is your perfect travel partner.
                       </p>
                       <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-                        <Link href={ROUTES.BOOK_TAXI} className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-white text-blue-700 font-bold text-lg hover:bg-slate-100 transition-colors shadow-lg">
+                        <Link href={ROUTES.BOOK_TAXI} className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-[#FF7444] text-white font-bold text-lg hover:bg-[#e85c2d] transition-colors shadow-lg">
                           Book Taxi Now
                         </Link>
                         <Link href={ROUTES.TOUR_PACKAGES} className="inline-flex items-center justify-center px-8 py-4 rounded-xl border-2 border-white text-white font-bold text-lg hover:bg-white/10 transition-colors">

@@ -84,7 +84,7 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 border-b bg-white/95 backdrop-blur-md border-slate-200 shadow-sm transition-all duration-300`}
+      className={`fixed top-0 left-0 right-0 z-50 border-b bg-[#F2A65A] backdrop-blur-md border-slate-200 shadow-sm transition-all duration-300`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Navigation */}
@@ -94,7 +94,8 @@ export function Header() {
               href={ROUTES.HOME}
               className={`text-lg sm:text-xl font-bold tracking-tight shrink-0 text-slate-900`}
             >
-              Travels in Mysore
+              <span className="hidden sm:inline">MM Mysore Travels | Travels in Mysore</span>
+              <span className="sm:hidden">MM Mysore Travels</span>
             </Link>
 
             {/* Desktop Menu */}
@@ -293,12 +294,14 @@ export function Header() {
               )}
             </div>
 
-            <Link
-              href={ROUTES.BOOK_TAXI}
-              className="hidden lg:inline-flex shrink-0 items-center justify-center rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 transition-colors"
+            <a
+              href={BUSINESS_INFO.whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden lg:inline-flex shrink-0 items-center justify-center rounded-lg bg-[#FF7444] px-6 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#e85c2d] transition-colors"
             >
-              Book Now
-            </Link>
+              BOOK TAXI NOW- 24/7 
+            </a>
 
             {/* Mobile Menu Toggle */}
             <button

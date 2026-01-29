@@ -49,7 +49,7 @@ export default function BookTaxiPage() {
                   { icon: "✓", title: "Instant Confirmation", desc: "Get booking confirmation within minutes via WhatsApp" },
                   { icon: "✓", title: "Best Price Guarantee", desc: "Transparent pricing with no hidden charges" },
                   { icon: "✓", title: "24/7 Availability", desc: "Book anytime, anywhere - we're always available" },
-                  { icon: "✓", title: "Professional Drivers", desc: "Experienced, courteous, Karnataka Tourism approved" },
+                  { icon: "✓", title: "Professional Drivers", desc: "Experienced, courteous, and verified drivers" },
                   { icon: "✓", title: "Clean Vehicles", desc: "Well-maintained, sanitized AC cabs" },
                   { icon: "✓", title: "Flexible Cancellation", desc: "Easy cancellation policy with full refund" },
                 ].map((item, i) => (
@@ -74,7 +74,7 @@ export default function BookTaxiPage() {
                   { step: "4", title: "Enjoy Your Ride", desc: "Driver will arrive on time for a comfortable journey" },
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-4">
-                    <div className="shrink-0 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-xl">
+                    <div className="shrink-0 w-12 h-12 bg-[#FF7444] text-white rounded-full flex items-center justify-center font-bold text-xl">
                       {item.step}
                     </div>
                     <div>
@@ -96,7 +96,7 @@ export default function BookTaxiPage() {
               <div className="space-y-3">
                 <a
                   href={`tel:${BUSINESS_INFO.phone}`}
-                  className="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center py-3 px-4 rounded-lg font-bold transition-colors"
+                  className="block w-full bg-[#FF7444] hover:bg-[#e85c2d] text-white text-center py-3 px-4 rounded-lg font-bold transition-colors"
                 >
                   Call {BUSINESS_INFO.phoneDisplay}
                 </a>

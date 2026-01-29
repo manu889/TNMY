@@ -5,8 +5,8 @@ import Link from "next/link";
 import { ROUTES } from "@/lib/constants/routes";
 
 export const metadata: Metadata = {
-  title: "About MM Mysore Travels | Leading Travel Agency & Taxi Service in Mysore Since 2009",
-  description: "Discover why MM Mysore Travels is the most trusted travel agency and taxi service in Mysore. 15+ years experience, 4.9★ rating, 10,000+ happy customers. Karnataka Tourism approved. Book travels in Mysore today!",
+  title: "About MM Mysore Travels | Leading Travel Agency & Taxi Service in Mysore Since 2015",
+  description: "Discover why MM Mysore Travels is the most trusted travel agency and taxi service in Mysore. 11+ years experience, 10,000+ happy customers. Book travels in Mysore today!",
   keywords: [
     "top travels in mysore",
     "best travel agency mysore",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/about" },
   openGraph: {
     title: "About MM Mysore Travels - Premier Travel Agency in Mysore",
-    description: "15+ years of trusted taxi services & tour packages in Mysore. ★4.9 rated with 349+ reviews.",
+    description: "11+ years of trusted taxi services & tour packages in Mysore. Highly rated travel service.",
     type: "website",
   }
 };
@@ -44,7 +44,7 @@ export default function AboutPage() {
               Premier Travel Agency & Taxi Services in Mysore
             </h1>
             <p className="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto">
-              Your Trusted Partner for Travels in Mysore Since {BUSINESS_INFO.founded} | Karnataka Tourism Approved | 15+ Years Excellence
+              Your Trusted Partner for Travels in Mysore Since {BUSINESS_INFO.founded} | 11+ Years Excellence
             </p>
             <div className="flex flex-wrap items-center justify-center gap-6 mt-6">
               <div className="flex items-center gap-2">
@@ -69,7 +69,7 @@ export default function AboutPage() {
                 <strong>MM Mysore Travels</strong> is the most trusted <strong>travel agency in Mysore</strong> and leading provider of <strong>taxi services in Mysore</strong>. Established in {BUSINESS_INFO.founded}, we have been serving travelers for over {BUSINESS_INFO.yearsExperience} years with exceptional dedication and reliability.
               </p>
               <p className="mb-4">
-                As a <strong>Karnataka Tourism Department approved</strong> travel operator, we specialize in providing comprehensive <strong>taxi services in Mysore</strong> including outstation cabs, airport transfers, local sightseeing, corporate transportation, and customized tour packages to Coorg, Ooty, Wayanad, Kodaikanal, and other popular destinations.
+                As a trusted travel operator, we specialize in providing comprehensive <strong>taxi services in Mysore</strong> including outstation cabs, airport transfers, local sightseeing, corporate transportation, and customized tour packages to Coorg, Ooty, Wayanad, Kodaikanal, and other popular destinations.
               </p>
               <p className="mb-4">
                 Our commitment to quality has made us one of the <strong>best travels in Mysore</strong>, earning a remarkable <strong>★{BUSINESS_INFO.rating.value} out of 5 rating</strong> from over <strong>{BUSINESS_INFO.rating.count} satisfied customers</strong>. When you search for &quot;<strong>travels in Mysore</strong>&quot; or &quot;<strong>taxi service Mysore</strong>&quot;, you&apos;re looking for the reliability, safety, and professionalism that MM Mysore Travels delivers every single day.
@@ -110,7 +110,7 @@ export default function AboutPage() {
                 {
                   icon: "🏆",
                   title: "Tourism Dept Approved",
-                  desc: "Official Karnataka Tourism approved operator with certified professional drivers."
+                  desc: "Professional travel operator with certified and verified drivers."
                 },
                 {
                   icon: "⏰",

@@ -23,7 +23,7 @@ const tourPackages = [
     href: ROUTES.MYSORE_TO_COORG,
     duration: "1 Day",
     distance: "120 km",
-    price: "Starting from ₹5,500",
+    price: "Starting from ₹4,500",
     category: "one-day",
     destination: "coorg",
     description: "Abbey Falls, Raja's Seat, Coffee Plantations, Omkareshwara Temple with scenic drive",
@@ -34,7 +34,7 @@ const tourPackages = [
     href: ROUTES.MYSORE_TO_OOTY,
     duration: "1 Day",
     distance: "125 km",
-    price: "Starting from ₹6,500",
+    price: "Starting from ₹5,500",
     category: "one-day",
     destination: "ooty",
     description: "Queen of Hill Stations - Botanical Garden, Ooty Lake, Tea Gardens, scenic toy train",
@@ -45,22 +45,11 @@ const tourPackages = [
     href: ROUTES.MYSORE_TO_WAYANAD,
     duration: "1-2 Days",
     distance: "140 km",
-    price: "Starting from ₹5,800",
+    price: "Starting from ₹5,000",
     category: "multi-day",
     destination: "wayanad",
     description: "Edakkal Caves, Soochipara Falls, wildlife sanctuaries, spice plantations",
     highlights: ["Edakkal Caves", "Soochipara Falls", "Wildlife Safari", "Spice Plantations"],
-  },
-  {
-    name: "Mysore to Bangalore",
-    href: ROUTES.MYSORE_TO_BANGALORE,
-    duration: "1 Day",
-    distance: "145 km",
-    price: "Starting from ₹3,500",
-    category: "one-day",
-    destination: "bangalore",
-    description: "Comfortable transfer or day trip to Bangalore with sightseeing options",
-    highlights: ["Lalbagh Garden", "Palace", "Vidhana Soudha", "ISKCON Temple"],
   },
   {
     name: "Mysore Coorg Wayanad",
@@ -89,7 +78,7 @@ const tourPackages = [
     href: ROUTES.MYSORE_OOTY_KODAIKANAL,
     duration: "4-6 Days",
     distance: "550 km",
-    price: "Starting from ₹22,000",
+    price: "Starting from ₹19,500",
     category: "multi-day",
     destination: "multi",
     description: "Extended hill station tour covering Tamil Nadu and Karnataka highlights",
@@ -111,11 +100,55 @@ const tourPackages = [
     href: ROUTES.TIRUPATI_PACKAGE,
     duration: "1-2 Days",
     distance: "450 km",
-    price: "Starting from ₹15,000",
+    price: "Starting from ₹12,500",
     category: "multi-day",
     destination: "tirupati",
     description: "Spiritual journey to Tirupati Balaji with comfortable travel and darshan arrangements",
     highlights: ["Tirupati Balaji Darshan", "Seven Hills", "Temple Visit", "Return Journey"],
+  },
+  {
+    name: "Mysore Bangalore Nandi Hills",
+    href: ROUTES.MYSORE_TO_BANGALORE,
+    duration: "2 Days",
+    distance: "210 km",
+    price: "Starting from ₹7,500",
+    category: "multi-day",
+    destination: "bangalore",
+    description: "Mysore to Bangalore transfer with city sightseeing and sunrise at Nandi Hills",
+    highlights: ["Bangalore City Tour", "Nandi Hills Sunrise", "Comfortable Transfer", "Scenic Views"],
+  },
+  {
+    name: "Bangalore Shivanasamudra Falls",
+    href: ROUTES.MYSORE_TO_BANGALORE,
+    duration: "2 Days",
+    distance: "285 km",
+    price: "Starting from ₹8,000",
+    category: "multi-day",
+    destination: "bangalore",
+    description: "Mysore to Bangalore journey with waterfall excursion and shopping experience",
+    highlights: ["Shivanasamudra Falls", "Bangalore Shopping", "Scenic Drive", "Waterfall Experience"],
+  },
+  {
+    name: "Complete Bangalore Explorer",
+    href: ROUTES.MYSORE_TO_BANGALORE,
+    duration: "3 Days",
+    distance: "360 km",
+    price: "Starting from ₹12,000",
+    category: "multi-day",
+    destination: "bangalore",
+    description: "Comprehensive Bangalore tour covering city attractions, Nandi Hills, and Lepakshi temple",
+    highlights: ["8 City Attractions", "Nandi Hills Sunrise", "Lepakshi Temple", "Complete Experience"],
+  },
+  {
+    name: "Weekend Adventure Package",
+    href: ROUTES.MYSORE_TO_BANGALORE,
+    duration: "3 Days",
+    distance: "400 km",
+    price: "Starting from ₹13,500",
+    category: "multi-day",
+    destination: "bangalore",
+    description: "Adventure-packed weekend with Anthargange caves, Nandi Hills, and Savandurga trek",
+    highlights: ["Anthargange Caves", "Nandi Hills Trek", "Savandurga Adventure", "Nature Exploration"],
   },
   {
     name: "Custom Tour Packages",
@@ -136,13 +169,10 @@ export function TourPackagesClient() {
 
   const filteredPackages = tourPackages.filter((pkg) => {
     if (selectedCategory !== "all" && pkg.category !== selectedCategory) return false;
-    if (
-      selectedDestination !== "all" &&
-      pkg.destination !== selectedDestination &&
-      pkg.destination !== "multi" &&
-      pkg.destination !== "custom"
-    )
+    // For destination filter: show only packages that match the selected destination
+    if (selectedDestination !== "all" && pkg.destination !== selectedDestination) {
       return false;
+    }
     return true;
   });
 
@@ -219,6 +249,7 @@ export function TourPackagesClient() {
                     { value: "coorg", label: "Coorg" },
                     { value: "ooty", label: "Ooty" },
                     { value: "wayanad", label: "Wayanad" },
+                    { value: "bangalore", label: "Bangalore" },
                     { value: "goa", label: "Goa" },
                     { value: "tirupati", label: "Tirupati" },
                   ].map((dest) => (

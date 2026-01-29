@@ -5,8 +5,8 @@ import Link from "next/link";
 import { ROUTES } from "@/lib/constants/routes";
 
 export const metadata: Metadata = {
-  title: "Mysore to Wayanad Taxi | ₹5,000 | Kerala Hill Station Cab Booking",
-  description: "Book Mysore to Wayanad taxi at ₹5,000. 130 km scenic drive to Kerala's green paradise. Visit waterfalls, wildlife, tea estates. 24/7 service.",
+  title: "Mysore to Wayanad Taxi | Starting from ₹5,000 | Kerala Hill Station Cab Booking",
+  description: "Book Mysore to Wayanad taxi starting from ₹5,000. 130 km scenic drive to Kerala's green paradise. Visit waterfalls, wildlife, tea estates. 24/7 service.",
   keywords: ["mysore to wayanad taxi", "mysore to wayanad cab", "wayanad taxi from mysore"],
   alternates: { canonical: "/mysore-to-wayanad/" },
 };

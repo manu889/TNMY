@@ -25,13 +25,13 @@ export default function DestinationWayanadPage() {
         <div className="mt-6 flex flex-wrap gap-4">
           <Link 
             href={ROUTES.MYSORE_TO_WAYANAD} 
-            className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-6 py-3 text-base font-semibold text-white hover:bg-blue-700 transition-colors shadow-sm"
+            className="inline-flex items-center justify-center rounded-lg bg-[#FF7444] px-6 py-3 text-base font-semibold text-white hover:bg-[#e85c2d] transition-colors shadow-sm"
           >
             Book Wayanad Taxi Now
           </Link>
           <Link 
             href={ROUTES.BOOK_TAXI} 
-            className="inline-flex items-center justify-center rounded-lg bg-white border-2 border-blue-600 px-6 py-3 text-base font-semibold text-blue-600 hover:bg-blue-50 transition-colors"
+            className="inline-flex items-center justify-center rounded-lg bg-white border-2 border-[#FF7444] px-6 py-3 text-base font-semibold text-[#FF7444] hover:bg-[#FFF5F0] transition-colors"
           >
             Get Instant Quote
           </Link>

@@ -26,18 +26,27 @@ export default function MysoreSightseeingTaxiPage() {
     { name: "Brindavan Gardens", time: "1-2 hours", desc: "Beautiful fountain gardens" },
   ];
 
-  const packages = [
+  const vehiclePricing = [
     {
-      title: "Half-Day Tour",
-      duration: "4-5 hours",
-      price: "₹400-600",
-      includes: ["2-3 major attractions", "Professional driver", "AC vehicle", "Flexible stops"]
+      type: "Sedan (4 Seater)",
+      models: "Dzire, Etios",
+      halfDay: "₹1,200",
+      fullDay: "₹2,000",
+      desc: "Perfect for couples and small families"
     },
     {
-      title: "Full-Day Tour",
-      duration: "8-9 hours",
-      price: "₹800-1,200",
-      includes: ["All main attractions", "Expert driver narration", "AC vehicle", "Lunch break", "Custom itinerary"]
+      type: "SUV (6-7 Seater)",
+      models: "Innova, Ertiga",
+      halfDay: "₹1,600",
+      fullDay: "₹2,800",
+      desc: "Spacious for families and groups"
+    },
+    {
+      type: "Tempo Traveller",
+      models: "12-17 Seater",
+      halfDay: "₹2,500",
+      fullDay: "₹4,500",
+      desc: "Large groups and corporate tours"
     }
   ];
 
@@ -89,24 +98,34 @@ export default function MysoreSightseeingTaxiPage() {
 
       {/* Package Options */}
       <div className="mt-12">
-        <h2 className="text-3xl font-bold text-slate-900">Tour Packages</h2>
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-          {packages.map((pkg, idx) => (
-            <div key={idx} className="rounded-xl border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-white p-6">
-              <h3 className="text-2xl font-bold text-slate-900">{pkg.title}</h3>
-              <p className="mt-2 text-lg font-semibold text-purple-600">{pkg.price}</p>
-              <p className="mt-1 text-sm text-slate-600">{pkg.duration}</p>
-              <div className="mt-4 space-y-2">
-                <p className="text-sm font-semibold text-slate-900">Includes:</p>
-                {pkg.includes.map((item, i) => (
-                  <div key={i} className="flex items-center gap-2 text-sm text-slate-600">
-                    <span className="text-purple-600 font-bold">✓</span> {item}
+        <h2 className="text-3xl font-bold text-slate-900">Vehicle-Based Pricing</h2>
+        <p className="mt-2 text-slate-600">Choose between half-day (4-5 hours, 40 km) or full-day (8-9 hours, 80 km) tours</p>
+        <div className="mt-6 space-y-4">
+          {vehiclePricing.map((vehicle, idx) => (
+            <div key={idx} className="rounded-xl border-2 border-slate-200 bg-white p-6 hover:border-purple-300 transition-colors">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-slate-900">{vehicle.type}</h3>
+                  <p className="text-sm text-slate-600 mt-1">{vehicle.models}</p>
+                  <p className="text-sm text-slate-500 mt-2">{vehicle.desc}</p>
+                </div>
+                <div className="flex gap-6 text-right">
+                  <div>
+                    <p className="text-xs text-slate-500">Half-Day</p>
+                    <p className="text-2xl font-bold text-purple-600">{vehicle.halfDay}</p>
+                    <p className="text-xs text-slate-600">4-5 hours</p>
                   </div>
-                ))}
+                  <div>
+                    <p className="text-xs text-slate-500">Full-Day</p>
+                    <p className="text-2xl font-bold text-purple-600">{vehicle.fullDay}</p>
+                    <p className="text-xs text-slate-600">8-9 hours</p>
+                  </div>
+                </div>
               </div>
             </div>
           ))}
         </div>
+        <p className="mt-4 text-sm text-slate-500">* Prices include AC vehicle, professional driver, fuel, and parking. Entry tickets to attractions not included.</p>
       </div>
 
       {/* Why Choose Us */}

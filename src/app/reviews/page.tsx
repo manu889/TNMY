@@ -7,7 +7,7 @@ import { ROUTES } from "@/lib/constants/routes";
 export const metadata: Metadata = {
   title: "Customer Reviews & Testimonials | Best Taxi Service in Mysore | 4.9★ Rated | MM Mysore Travels",
   description:
-    "Read 349+ customer reviews for MM Mysore Travels. Rated 4.9/5 stars by travelers for taxi services in Mysore, outstation trips to Coorg, Ooty, Wayanad. Verified testimonials from satisfied customers. Professional drivers, clean vehicles, transparent pricing. Book with confidence. Trusted travel agency in Mysore since 2009.",
+    "Read 349+ customer reviews for MM Mysore Travels. Rated 4.9/5 stars by travelers for taxi services in Mysore, outstation trips to Coorg, Ooty, Wayanad. Verified testimonials from satisfied customers. Professional drivers, clean vehicles, transparent pricing. Book with confidence. Trusted travel agency in Mysore since 2015.",
   keywords: [
     "top travels in mysore",
     "best travel agency mysore",

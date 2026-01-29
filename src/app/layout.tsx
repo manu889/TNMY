@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     default: "Travels in Mysore | Travel Agency Mysore | Taxi Services Mysore | MM Mysore Travels",
     template: "%s | MM Mysore Travels",
   },
-  description: "Leading travels in Mysore ★ 4.9/5 rated travel agency with 349+ reviews ★ Book taxi services in Mysore & cabs in Mysore, outstation cabs, tour packages to Coorg, Ooty, Wayanad ★ Karnataka Tourism approved ★ 15+ years experience ★ 24/7 service ★ Call +91 96113 53434",
+  description: "Leading travels in Mysore ★ Highly rated travel agency ★ Book taxi services in Mysore & cabs in Mysore, outstation cabs, tour packages to Coorg, Ooty, Wayanad ★ 11+ years experience ★ 24/7 service ★ Call +91 96113 53434",
   keywords: [
     "top travels in mysore",
     "best travel agency mysore",
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     url: BUSINESS_INFO.url,
     siteName: "Travels in Mysore",
     title: "Travels in Mysore | Best Taxi Services & Tour Packages",
-    description: "4.9 rated Mysore travels. Book taxis, tour packages to Coorg, Ooty, Wayanad. 15+ years trusted service.",
+    description: "4.9 rated Mysore travels. Book taxis, tour packages to Coorg, Ooty, Wayanad. 11+ years trusted service.",
     images: [
       {
         url: "/images/hero/hero-bg1.png",
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Travels in Mysore | Best Taxi Services & Tour Packages",
-    description: "4.9 rated Mysore travels. Book taxis, tour packages. 15+ years trusted service.",
+    description: "4.9 rated Mysore travels. Book taxis, tour packages. 11+ years trusted service.",
     images: ["/images/hero/hero-bg1.png"],
   },
   robots: {

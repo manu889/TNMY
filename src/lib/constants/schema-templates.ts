@@ -7,7 +7,7 @@ export const LOCAL_BUSINESS_SCHEMA = {
   "@id": `${BUSINESS_INFO.url}/#business`,
   "name": BUSINESS_INFO.name,
   "alternateName": BUSINESS_INFO.alternateName,
-  "description": "Mysore's #1 rated travel service offering taxi services, tour packages, and outstation cabs. 15+ years experience with 4.9★ rating from 349+ reviews.",
+  "description": "Mysore's highly rated travel service offering taxi services, tour packages, and outstation cabs. 11+ years experience and trusted by thousands of customers.",
   
   "url": BUSINESS_INFO.url,
   "logo": {
@@ -106,7 +106,7 @@ export const WEBSITE_SCHEMA = {
   "@id": `${BUSINESS_INFO.url}/#website`,
   "url": BUSINESS_INFO.url,
   "name": "Travels in Mysore",
-  "description": "Book taxi services and tour packages in Mysore. 4.9★ rated travel service with 15+ years experience.",
+  "description": "Book taxi services and tour packages in Mysore. 4.9★ rated travel service with 11+ years experience.",
   "publisher": {
     "@id": `${BUSINESS_INFO.url}/#organization`
   },

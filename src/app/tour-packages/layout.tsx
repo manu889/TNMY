@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Tour Packages from Mysore | Coorg, Ooty, Wayanad Tours | Travels in Mysore",
   description:
-    "Best tour packages from Mysore to Coorg, Ooty, Wayanad, Kodaikanal, Bangalore, Goa. One-day tours starting ₹2,000, multi-day packages with experienced drivers. Curated itineraries for taxi services in Mysore. 4.9★ rated travel agency. Book travels in Mysore with transparent pricing and comfortable AC vehicles.",
+    "Best tour packages from Mysore to Coorg, Ooty, Wayanad, Kodaikanal, Bangalore, Goa. One-day tours starting ₹2,000, multi-day packages with experienced drivers. Curated itineraries for taxi services in Mysore. Highly rated travel agency. Book travels in Mysore with transparent pricing and comfortable AC vehicles.",
   keywords: [
     "tour packages from mysore",
     "mysore tour packages",

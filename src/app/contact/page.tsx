@@ -123,7 +123,7 @@ export default function ContactPage() {
             <div className="space-y-4">
               <a
                 href={`tel:${BUSINESS_INFO.phone}`}
-                className="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center py-4 px-6 rounded-lg font-bold transition-colors shadow-sm hover:shadow"
+                className="block w-full bg-[#FF7444] hover:bg-[#e85c2d] text-white text-center py-4 px-6 rounded-lg font-bold transition-colors shadow-sm hover:shadow"
               >
                 Call now: {BUSINESS_INFO.phoneDisplay}
               </a>
@@ -146,7 +146,7 @@ export default function ContactPage() {
             <div className="mt-8 pt-8 border-t">
               <h3 className="font-bold text-gray-900 mb-4">Follow Us</h3>
               <div className="flex gap-4">
-                <a href={BUSINESS_INFO.social.facebook} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-blue-600 hover:bg-blue-700 text-white rounded-full flex items-center justify-center transition">
+                <a href={BUSINESS_INFO.social.facebook} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-[#FF7444] hover:bg-[#e85c2d] text-white rounded-full flex items-center justify-center transition">
                   <span className="sr-only">Facebook</span>
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
@@ -182,7 +182,7 @@ export default function ContactPage() {
               { q: "How do I book a cab?", a: "Call us, WhatsApp, or use our online booking form. We confirm bookings instantly." },
               { q: "What are your payment options?", a: "Cash, UPI, cards accepted. Online payment options available." },
               { q: "Do you provide outstation services?", a: "Yes, we serve all major destinations like Coorg, Ooty, Wayanad, Bangalore, and more." },
-              { q: "Are your drivers experienced?", a: "Yes, all drivers are Karnataka Tourism approved with 10+ years experience." },
+              { q: "Are your drivers experienced?", a: "Yes, all drivers are verified and trained with 10+ years experience." },
               { q: "What's your cancellation policy?", a: "Free cancellation up to 2 hours before pickup. Contact us for details." },
               { q: "Do you offer airport transfers?", a: "Yes, we provide reliable airport pickup/drop for Bangalore and Mysore airports." },
             ].map((faq, i) => (

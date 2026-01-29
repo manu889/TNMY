@@ -88,25 +88,47 @@ export default function OutstationTaxiMysorePage() {
 
       {/* Pricing Section */}
       <div className="mt-12 rounded-2xl bg-slate-50 p-8 border border-slate-200">
-        <h2 className="text-3xl font-bold text-slate-900">Simple Transparent Pricing</h2>
-        <p className="mt-2 text-slate-600">₹13/km for outstation travel with zero hidden charges</p>
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="rounded-xl bg-white p-6 ring-1 ring-slate-900/10">
-            <div className="text-sm font-semibold text-slate-600">Starting Price</div>
-            <div className="mt-2 text-3xl font-bold text-blue-600">₹910</div>
-            <div className="mt-1 text-sm text-slate-600">Minimum for 70 km</div>
+        <h2 className="text-3xl font-bold text-slate-900">Vehicle-Based Pricing</h2>
+        <p className="mt-2 text-slate-600">Choose the right vehicle for your journey. All rates include driver, fuel, and tolls.</p>
+        <div className="mt-6 space-y-4">
+          <div className="rounded-xl border-2 border-slate-200 bg-white p-6 hover:border-blue-300 transition-colors">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div>
+                <h3 className="text-xl font-bold text-slate-900">Sedan (4 Seater)</h3>
+                <p className="text-sm text-slate-600 mt-1">Dzire, Etios • Perfect for couples and small families</p>
+              </div>
+              <div className="text-right">
+                <p className="text-3xl font-bold text-blue-600">₹13/km</p>
+                <p className="text-sm text-slate-600 mt-1">Min 250 km/day</p>
+              </div>
+            </div>
           </div>
-          <div className="rounded-xl bg-white p-6 ring-1 ring-slate-900/10">
-            <div className="text-sm font-semibold text-slate-600">Per Kilometer</div>
-            <div className="mt-2 text-3xl font-bold text-blue-600">₹13</div>
-            <div className="mt-1 text-sm text-slate-600">Flat rate for all routes</div>
+          <div className="rounded-xl border-2 border-slate-200 bg-white p-6 hover:border-blue-300 transition-colors">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div>
+                <h3 className="text-xl font-bold text-slate-900">SUV (6-7 Seater)</h3>
+                <p className="text-sm text-slate-600 mt-1">Innova, Ertiga • Spacious for families and groups</p>
+              </div>
+              <div className="text-right">
+                <p className="text-3xl font-bold text-blue-600">₹17/km</p>
+                <p className="text-sm text-slate-600 mt-1">Min 250 km/day</p>
+              </div>
+            </div>
           </div>
-          <div className="rounded-xl bg-white p-6 ring-1 ring-slate-900/10">
-            <div className="text-sm font-semibold text-slate-600">Night Surcharge</div>
-            <div className="mt-2 text-3xl font-bold text-blue-600">₹150</div>
-            <div className="mt-1 text-sm text-slate-600">10 PM - 6 AM travel</div>
+          <div className="rounded-xl border-2 border-slate-200 bg-white p-6 hover:border-blue-300 transition-colors">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div>
+                <h3 className="text-xl font-bold text-slate-900">Tempo Traveller (12-17 Seater)</h3>
+                <p className="text-sm text-slate-600 mt-1">Ideal for large groups and corporate travel</p>
+              </div>
+              <div className="text-right">
+                <p className="text-3xl font-bold text-blue-600">₹25/km</p>
+                <p className="text-sm text-slate-600 mt-1">Min 250 km/day</p>
+              </div>
+            </div>
           </div>
         </div>
+        <p className="mt-4 text-sm text-slate-500">* Night surcharge ₹200-500 applicable for 10 PM - 6 AM travel. Driver allowance ₹400/day included.</p>
       </div>
 
       {/* Popular Routes */}

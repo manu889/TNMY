@@ -6,7 +6,7 @@ import { ROUTES } from "@/lib/constants/routes";
 
 export const metadata: Metadata = {
   title: "Mysore One Day Tour Package | Local Sightseeing | Palace, Zoo, Gardens",
-  description: "Book Mysore one day tour at ₹1,500. Visit Mysore Palace, Chamundi Hills, Zoo, Brindavan Gardens. Professional guide & driver. AC cabs available.",
+  description: "Book Mysore one day tour starting from ₹1,500. Visit Mysore Palace, Chamundi Hills, Zoo, Brindavan Gardens. Professional guide & driver. AC cabs available.",
   keywords: ["mysore one day tour", "mysore local sightseeing", "mysore city tour", "mysore tourist places"],
   alternates: { canonical: "/mysore-one-day-tour/" },
 };
@@ -85,17 +85,17 @@ export default function MysoreOneDayTourPage() {
                   <tr>
                     <td className="px-4 py-3 text-slate-700">Sedan (AC)</td>
                     <td className="px-4 py-3 text-slate-700">4 Passengers</td>
-                    <td className="px-4 py-3 font-bold text-slate-900">₹1,500</td>
+                    <td className="px-4 py-3 font-bold text-slate-900">₹2,000</td>
                   </tr>
                   <tr>
                     <td className="px-4 py-3 text-slate-700">SUV (AC)</td>
                     <td className="px-4 py-3 text-slate-700">6-7 Passengers</td>
-                    <td className="px-4 py-3 font-bold text-slate-900">₹2,000</td>
+                    <td className="px-4 py-3 font-bold text-slate-900">₹2,500</td>
                   </tr>
                   <tr>
                     <td className="px-4 py-3 text-slate-700">Tempo Traveller</td>
                     <td className="px-4 py-3 text-slate-700">12-14 Passengers</td>
-                    <td className="px-4 py-3 font-bold text-slate-900">₹3,500</td>
+                    <td className="px-4 py-3 font-bold text-slate-900">₹4,000</td>
                   </tr>
                 </tbody>
               </table>

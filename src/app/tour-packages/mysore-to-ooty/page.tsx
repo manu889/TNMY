@@ -7,8 +7,8 @@ import Link from "next/link";
 import { ROUTES } from "@/lib/constants/routes";
 
 export const metadata: Metadata = {
-  title: "Mysore to Ooty Taxi | ₹5,500 | Queen of Hill Stations Cab Booking",
-  description: "Book Mysore to Ooty cab at ₹5,500. 125 km scenic drive to Nilgiris. Visit Botanical Gardens, Ooty Lake, Tea Estates. Expert drivers. Book now!",
+  title: "Mysore to Ooty Taxi | Starting from ₹5,500 | Queen of Hill Stations Cab Booking",
+  description: "Book Mysore to Ooty cab starting from ₹5,500. 125 km scenic drive to Nilgiris. Visit Botanical Gardens, Ooty Lake, Tea Estates. Expert drivers. Book now!",
   keywords: ["mysore to ooty taxi", "mysore to ooty cab", "ooty taxi from mysore", "mysore ooty car rental"],
   alternates: {
     canonical: "/mysore-to-ooty/",
@@ -36,7 +36,7 @@ const tourPackage = createTourPackageSchema({
 const faqs = createFAQSchema([
   {
     question: "How much is Mysore to Ooty taxi fare?",
-    answer: "Mysore to Ooty taxi starts at ₹5,500 for sedan (one way). SUV and larger vehicles available. Round trip packages with discounted rates."
+    answer: "Mysore to Ooty taxi starting from ₹5,500 for sedan (one way). SUV and larger vehicles available. Round trip packages with discounted rates."
   },
   {
     question: "How long does it take from Mysore to Ooty?",

@@ -26,7 +26,7 @@ export default function Error({
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button
             onClick={reset}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-bold transition-colors shadow-sm hover:shadow"
+            className="bg-[#FF7444] hover:bg-[#e85c2d] text-white px-8 py-3 rounded-lg font-bold transition-colors shadow-sm hover:shadow"
           >
             Try again
           </button>
@@ -43,7 +43,7 @@ export default function Error({
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="tel:+919611353434"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg font-semibold transition-colors"
+              className="bg-[#FF7444] hover:bg-[#e85c2d] text-white px-6 py-2.5 rounded-lg font-semibold transition-colors"
             >
               Call now
             </a>

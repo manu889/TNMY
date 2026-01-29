@@ -37,8 +37,8 @@ export const BUSINESS_INFO = {
   },
   
   // Business Info
-  founded: '2009',
-  yearsExperience: '15+',
+  founded: '2015',
+  yearsExperience: '11+',
   
   // Reviews
   rating: {
@@ -69,7 +69,7 @@ export const BUSINESS_INFO = {
   
   // Certifications
   certifications: [
-    'Karnataka Tourism Department Approved',
+    'Professional & Verified Drivers',
     'Professional Tour Guide Badges'
   ]
 } as const;

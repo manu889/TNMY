@@ -77,18 +77,89 @@ export default function AirportTransferMysorePage() {
       {/* Pricing Section */}
       <div className="mt-12 rounded-2xl bg-slate-50 p-8 border border-slate-200">
         <h2 className="text-3xl font-bold text-slate-900">Airport Transfer Pricing</h2>
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="rounded-xl bg-white p-6 ring-1 ring-slate-900/10">
-            <div className="text-sm font-semibold text-slate-600">Bangalore Airport</div>
-            <div className="mt-2 text-2xl font-bold text-blue-600">₹1,200 - ₹1,500</div>
-            <div className="mt-1 text-sm text-slate-600">One-way transfer</div>
+        <p className="mt-2 text-slate-600">Vehicle-based pricing for Bangalore Airport transfers from Mysore</p>
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="rounded-xl bg-white p-6 ring-1 ring-slate-900/10 hover:shadow-lg transition-shadow">
+            <div className="flex items-center justify-between mb-2">
+              <div className="text-sm font-semibold text-slate-600">Sedan (4 Seater)</div>
+              <span className="px-2 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-semibold">Most Popular</span>
+            </div>
+            <div className="mt-2 flex items-baseline gap-1">
+              <span className="text-sm text-slate-500">Starting from</span>
+              <span className="text-3xl font-bold text-blue-600">₹2,800</span>
+            </div>
+            <div className="mt-1 text-sm text-slate-600">One-way • Dzire, Etios</div>
+            <div className="mt-4 space-y-2 text-sm text-slate-600">
+              <div className="flex items-center gap-2">
+                <span className="text-green-600">✓</span>
+                <span>4 passengers + luggage</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-green-600">✓</span>
+                <span>AC comfort</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-green-600">✓</span>
+                <span>Fuel efficient</span>
+              </div>
+            </div>
           </div>
-          <div className="rounded-xl bg-white p-6 ring-1 ring-slate-900/10">
-            <div className="text-sm font-semibold text-slate-600">Round Trip</div>
-            <div className="mt-2 text-2xl font-bold text-blue-600">₹2,000 - ₹2,500</div>
-            <div className="mt-1 text-sm text-slate-600">Pickup & drop-off</div>
+
+          <div className="rounded-xl bg-white p-6 ring-1 ring-slate-900/10 hover:shadow-lg transition-shadow">
+            <div className="flex items-center justify-between mb-2">
+              <div className="text-sm font-semibold text-slate-600">SUV (6-7 Seater)</div>
+              <span className="px-2 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold">Family</span>
+            </div>
+            <div className="mt-2 flex items-baseline gap-1">
+              <span className="text-sm text-slate-500">Starting from</span>
+              <span className="text-3xl font-bold text-emerald-600">₹3,500</span>
+            </div>
+            <div className="mt-1 text-sm text-slate-600">One-way • Innova, Ertiga</div>
+            <div className="mt-4 space-y-2 text-sm text-slate-600">
+              <div className="flex items-center gap-2">
+                <span className="text-green-600">✓</span>
+                <span>6-7 passengers</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-green-600">✓</span>
+                <span>Large luggage space</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-green-600">✓</span>
+                <span>Extra comfort</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-xl bg-white p-6 ring-1 ring-slate-900/10 hover:shadow-lg transition-shadow">
+            <div className="flex items-center justify-between mb-2">
+              <div className="text-sm font-semibold text-slate-600">Tempo Traveller</div>
+              <span className="px-2 py-1 rounded-full bg-purple-50 text-purple-700 text-xs font-semibold">Groups</span>
+            </div>
+            <div className="mt-2 flex items-baseline gap-1">
+              <span className="text-sm text-slate-500">Starting from</span>
+              <span className="text-3xl font-bold text-purple-600">₹5,500</span>
+            </div>
+            <div className="mt-1 text-sm text-slate-600">One-way • 12-17 seater</div>
+            <div className="mt-4 space-y-2 text-sm text-slate-600">
+              <div className="flex items-center gap-2">
+                <span className="text-green-600">✓</span>
+                <span>12-17 passengers</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-green-600">✓</span>
+                <span>Push-back seats</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-green-600">✓</span>
+                <span>Group travel</span>
+              </div>
+            </div>
           </div>
         </div>
+        <p className="mt-6 text-sm text-slate-500 text-center">
+          * Prices for Mysore to Bangalore Airport one-way trip. Round trip and multi-destination packages available. Contact for exact quote.
+        </p>
       </div>
 
       {/* How it Works */}
