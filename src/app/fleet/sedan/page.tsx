@@ -13,16 +13,12 @@ export const metadata: Metadata = {
 const sedanProductSchema = createProductSchema({
   name: "Sedan Taxi Service in Mysore",
   description: "Comfortable 4-seater sedan taxi service in Mysore. Choose from Dzire, Etios, or similar models for local trips, outstation travel, and airport transfers.",
+  image: "/images/vehicles/Dzire.png",
   category: "Vehicle Rental Service",
   brand: "MM Mysore Travels",
   offers: {
-    price: 13,
+    price: "13",
     priceCurrency: "INR",
-    description: "Per kilometer outstation rate",
-  },
-  aggregateRating: {
-    ratingValue: 4.9,
-    reviewCount: 349,
   },
   features: [
     "4 Seater Capacity",

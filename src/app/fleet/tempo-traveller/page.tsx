@@ -13,16 +13,12 @@ export const metadata: Metadata = {
 const tempoProductSchema = createProductSchema({
   name: "Tempo Traveller Rental in Mysore",
   description: "Spacious 13-17 seater tempo traveller rental in Mysore. Perfect for group tours, corporate outings, family gatherings, and wedding events with luxury push-back seats.",
+  image: "/images/vehicles/Tempo-Traveller.png",
   category: "Vehicle Rental Service",
   brand: "MM Mysore Travels",
   offers: {
-    price: 25,
+    price: "25",
     priceCurrency: "INR",
-    description: "Per kilometer outstation rate",
-  },
-  aggregateRating: {
-    ratingValue: 4.9,
-    reviewCount: 349,
   },
   features: [
     "13-17 Seater Capacity",

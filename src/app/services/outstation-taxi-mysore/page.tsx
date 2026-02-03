@@ -32,17 +32,10 @@ const outstationServiceSchema = createServiceSchema({
   name: "Outstation Taxi Service from Mysore",
   description: "Premium outstation taxi service from Mysore to nearby destinations like Coorg, Ooty, Wayanad, and Bangalore with transparent pricing starting at ₹13/km and professional drivers.",
   serviceType: "Outstation Taxi Service",
-  areaServed: "Mysore, Karnataka, India",
-  provider: "MM Mysore Travels",
+  areaServed: ["Mysore", "Karnataka", "India"],
   offers: {
-    price: 13,
+    price: "13",
     priceCurrency: "INR",
-    description: "Per kilometer outstation taxi rate",
-  },
-  availableChannel: {
-    availableLanguage: "en",
-    serviceUrl: "https://travelmysore.com/services/outstation-taxi-mysore/",
-    servicePhone: "+919611353434",
   },
 });
 

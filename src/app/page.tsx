@@ -1,14 +1,12 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import { BUSINESS_INFO } from "@/lib/constants/business-info";
 import { ROUTES } from "@/lib/constants/routes";
-import { BookingForm } from "@/components/forms/BookingForm";
-import { useState, useEffect } from "react";
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { createReviewSchema } from "@/lib/constants/schema-templates";
+import { HeroBackground } from "@/components/sections/HeroBackground";
+import { BookingForm } from "@/components/forms/BookingForm";
 
 export const metadata: Metadata = {
   alternates: {
@@ -27,48 +25,6 @@ function CheckIcon({ className }: { className?: string }) {
     </svg>
   );
 }
-
-function HeroImageSlider() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  
-  const images = [
-    "/images/hero/mysore-palace.jpg"
-    , "/images/hero/hero-bg2.jpeg",
-  ];  
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % images.length);
-    }, 5000); // Change image every 5 seconds
-
-    return () => clearInterval(interval);
-  }, [images.length]);
-
-  return (
-    <div className="absolute inset-0">
-      {images.map((src, index) => (
-        <div
-          key={src}
-          className={`absolute inset-0 transition-opacity duration-1000 ${
-            index === currentSlide ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <Image
-            src={src}
-            alt={`Travels in Mysore - taxi services in Mysore hero image ${index + 1}`}
-            fill
-            priority={index === 0}
-            className="object-cover"
-          />
-        </div>
-      ))}
-      <div className="absolute inset-0 bg-black/50" />
-      <div className="absolute inset-0 bg-linear-to-b from-slate-900/30 via-slate-900/40 to-slate-900/50" />
-    </div>
-  );
-}
-
-
 
 export default function Home() {
   const services = [
@@ -275,7 +231,7 @@ export default function Home() {
                   <JsonLd key={idx} data={schema} />
                 ))}
                 <section className="relative overflow-hidden bg-slate-900">
-                  <HeroImageSlider />
+                  <HeroBackground />
                   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-14 relative">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center justify-items-center">
                       <div className="pt-2 text-center">

@@ -13,16 +13,12 @@ export const metadata: Metadata = {
 const busProductSchema = createProductSchema({
   name: "Bus Rental Service in Mysore",
   description: "Large 30-45 seater bus rental in Mysore for corporate events, school trips, wedding guests, and mass transportation. AC and non-AC options available.",
+  image: "/images/vehicles/Crysta.webp",
   category: "Vehicle Rental Service",
   brand: "MM Mysore Travels",
   offers: {
-    price: 35,
+    price: "35",
     priceCurrency: "INR",
-    description: "Per kilometer outstation rate",
-  },
-  aggregateRating: {
-    ratingValue: 4.9,
-    reviewCount: 349,
   },
   features: [
     "30-45 Seater Capacity",

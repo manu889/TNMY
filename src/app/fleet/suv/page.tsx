@@ -13,16 +13,12 @@ export const metadata: Metadata = {
 const suvProductSchema = createProductSchema({
   name: "SUV Taxi Service in Mysore",
   description: "Spacious 6-7 seater SUV taxi service in Mysore. Premium Innova Crysta, Ertiga models for families, groups, and travelers with extra luggage.",
+  image: "/images/vehicles/Innova.png",
   category: "Vehicle Rental Service",
   brand: "MM Mysore Travels",
   offers: {
-    price: 16,
+    price: "16",
     priceCurrency: "INR",
-    description: "Per kilometer outstation rate",
-  },
-  aggregateRating: {
-    ratingValue: 4.9,
-    reviewCount: 349,
   },
   features: [
     "6-7 Seater Capacity",

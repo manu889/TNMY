@@ -23,17 +23,10 @@ const corporateServiceSchema = createServiceSchema({
   name: "Corporate Cab Service in Mysore",
   description: "Professional corporate transportation for executives, business travel, guest pickups, and corporate events. Verified drivers, premium vehicles, and dedicated support for your business needs.",
   serviceType: "Corporate Transportation Service",
-  areaServed: "Mysore, Karnataka, India",
-  provider: "MM Mysore Travels",
+  areaServed: ["Mysore", "Karnataka", "India"],
   offers: {
-    price: 2000,
+    price: "2000",
     priceCurrency: "INR",
-    description: "Full-day corporate cab service in Mysore",
-  },
-  availableChannel: {
-    availableLanguage: "en",
-    serviceUrl: "https://travelmysore.com/services/corporate-cab-mysore/",
-    servicePhone: "+919611353434",
   },
 });
 

@@ -24,17 +24,10 @@ const airportServiceSchema = createServiceSchema({
   name: "Airport Transfer Service from Mysore",
   description: "Hassle-free airport pickup and drop-off service from Mysore to Bangalore International Airport with on-time service, flight tracking, and professional drivers.",
   serviceType: "Airport Transportation Service",
-  areaServed: "Mysore, Karnataka, India",
-  provider: "MM Mysore Travels",
+  areaServed: ["Mysore", "Karnataka", "India"],
   offers: {
-    price: 3200,
+    price: "3200",
     priceCurrency: "INR",
-    description: "One-way airport transfer from Mysore to Bangalore Airport",
-  },
-  availableChannel: {
-    availableLanguage: "en",
-    serviceUrl: "https://travelmysore.com/services/airport-transfer-mysore/",
-    servicePhone: "+919611353434",
   },
 });
 

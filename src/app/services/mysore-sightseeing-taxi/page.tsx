@@ -24,17 +24,10 @@ const sightseeingServiceSchema = createServiceSchema({
   name: "Mysore Sightseeing Taxi Service",
   description: "Mysore city sightseeing taxi for Palace, Chamundi Hills, Zoo, Brindavan Gardens tours. Half-day and full-day packages with professional drivers and flexible itineraries.",
   serviceType: "Local Sightseeing Tour Service",
-  areaServed: "Mysore, Karnataka, India",
-  provider: "MM Mysore Travels",
+  areaServed: ["Mysore", "Karnataka", "India"],
   offers: {
-    price: 1200,
+    price: "1200",
     priceCurrency: "INR",
-    description: "Half-day Mysore sightseeing tour (4 hours, 40 km)",
-  },
-  availableChannel: {
-    availableLanguage: "en",
-    serviceUrl: "https://travelmysore.com/services/mysore-sightseeing-taxi/",
-    servicePhone: "+919611353434",
   },
 });
 
