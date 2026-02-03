@@ -105,6 +105,20 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
       <head>
+        {/* PWA Manifest */}
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#2563eb" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="MM Mysore Travels" />
+        
+        {/* Favicons and Icons */}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        
         {/* Global Schemas - Always present on every page */}
         <JsonLd data={LOCAL_BUSINESS_SCHEMA} />
         <JsonLd data={ORGANIZATION_SCHEMA} />
@@ -112,7 +126,7 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased bg-white text-slate-900 overflow-x-hidden">
         <Header />
-        <main className="min-h-screen pb-20 lg:pb-0 pt-18">{children}</main>
+        <main className="min-h-screen pb-20 lg:pb-0 pt-[106px]">{children}</main>
         <Footer />
         <MobileBottomBar />
         <ScrollToTop />

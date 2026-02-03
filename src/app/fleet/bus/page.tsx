@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ROUTES } from "@/lib/constants/routes";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { createProductSchema } from "@/lib/constants/schema-templates";
 
 export const metadata: Metadata = {
   title: "Bus Rental in Mysore | Large Group Travel",
@@ -8,9 +10,36 @@ export const metadata: Metadata = {
   alternates: { canonical: "/fleet/bus/" },
 };
 
+const busProductSchema = createProductSchema({
+  name: "Bus Rental Service in Mysore",
+  description: "Large 30-45 seater bus rental in Mysore for corporate events, school trips, wedding guests, and mass transportation. AC and non-AC options available.",
+  category: "Vehicle Rental Service",
+  brand: "MM Mysore Travels",
+  offers: {
+    price: 35,
+    priceCurrency: "INR",
+    description: "Per kilometer outstation rate",
+  },
+  aggregateRating: {
+    ratingValue: 4.9,
+    reviewCount: 349,
+  },
+  features: [
+    "30-45 Seater Capacity",
+    "AC and Non-AC Options",
+    "Push Back Seats (AC Bus)",
+    "Entertainment System",
+    "Large Luggage Compartment",
+    "Professional Driver",
+    "Most Economical for Large Groups",
+    "GPS Tracking and Insurance",
+  ],
+});
+
 export default function FleetBusPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <JsonLd data={busProductSchema} />
       <Breadcrumbs items={[{ label: "Fleet", href: ROUTES.FLEET }, { label: "Bus", href: ROUTES.FLEET_BUS }]} />
       
       <div className="mt-6 rounded-3xl bg-gradient-to-br from-orange-600 to-red-700 p-10 text-white shadow-xl">

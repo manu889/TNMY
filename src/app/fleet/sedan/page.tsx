@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ROUTES } from "@/lib/constants/routes";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { createProductSchema } from "@/lib/constants/schema-templates";
 
 export const metadata: Metadata = {
   title: "Sedan Taxi in Mysore | 4 Seater",
@@ -8,9 +10,36 @@ export const metadata: Metadata = {
   alternates: { canonical: "/fleet/sedan/" },
 };
 
+const sedanProductSchema = createProductSchema({
+  name: "Sedan Taxi Service in Mysore",
+  description: "Comfortable 4-seater sedan taxi service in Mysore. Choose from Dzire, Etios, or similar models for local trips, outstation travel, and airport transfers.",
+  category: "Vehicle Rental Service",
+  brand: "MM Mysore Travels",
+  offers: {
+    price: 13,
+    priceCurrency: "INR",
+    description: "Per kilometer outstation rate",
+  },
+  aggregateRating: {
+    ratingValue: 4.9,
+    reviewCount: 349,
+  },
+  features: [
+    "4 Seater Capacity",
+    "Air Conditioning",
+    "Professional Driver",
+    "Fuel Efficient (20+ kmpl)",
+    "Spacious Boot",
+    "Airport Transfer Service",
+    "Outstation Travel",
+    "Local Sightseeing Packages",
+  ],
+});
+
 export default function FleetSedanPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <JsonLd data={sedanProductSchema} />
       <Breadcrumbs items={[{ label: "Fleet", href: ROUTES.FLEET }, { label: "Sedan", href: ROUTES.FLEET_SEDAN }]} />
       
       <div className="mt-6 rounded-3xl bg-gradient-to-br from-blue-600 to-indigo-700 p-10 text-white shadow-xl">

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ROUTES } from "@/lib/constants/routes";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { createProductSchema } from "@/lib/constants/schema-templates";
 
 export const metadata: Metadata = {
   title: "Tempo Traveller in Mysore | Group Travel",
@@ -8,9 +10,36 @@ export const metadata: Metadata = {
   alternates: { canonical: "/fleet/tempo-traveller/" },
 };
 
+const tempoProductSchema = createProductSchema({
+  name: "Tempo Traveller Rental in Mysore",
+  description: "Spacious 13-17 seater tempo traveller rental in Mysore. Perfect for group tours, corporate outings, family gatherings, and wedding events with luxury push-back seats.",
+  category: "Vehicle Rental Service",
+  brand: "MM Mysore Travels",
+  offers: {
+    price: 25,
+    priceCurrency: "INR",
+    description: "Per kilometer outstation rate",
+  },
+  aggregateRating: {
+    ratingValue: 4.9,
+    reviewCount: 349,
+  },
+  features: [
+    "13-17 Seater Capacity",
+    "Push Back Reclining Seats",
+    "Powerful AC System",
+    "Entertainment System with LCD",
+    "Large Luggage Space",
+    "USB Charging Ports",
+    "Professional Driver",
+    "GPS Tracking",
+  ],
+});
+
 export default function FleetTempoPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <JsonLd data={tempoProductSchema} />
       <Breadcrumbs items={[{ label: "Fleet", href: ROUTES.FLEET }, { label: "Tempo Traveller", href: ROUTES.FLEET_TEMPO }]} />
       
       <div className="mt-6 rounded-3xl bg-gradient-to-br from-purple-600 to-pink-700 p-10 text-white shadow-xl">

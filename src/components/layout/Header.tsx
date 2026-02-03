@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useRef, useState, type FocusEvent, type RefObject } from "react";
 import { BUSINESS_INFO } from "@/lib/constants/business-info";
 import { ROUTES } from "@/lib/constants/routes";
+import { TopBar } from "./TopBar";
 
 export function Header() {
   const pathname = usePathname();
@@ -12,6 +13,15 @@ export function Header() {
   const [openDesktopMenu, setOpenDesktopMenu] = useState<null | "destinations" | "services">(null);
   const destinationsMenuRef = useRef<HTMLDivElement | null>(null);
   const servicesMenuRef = useRef<HTMLDivElement | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
@@ -83,10 +93,23 @@ export function Header() {
   }
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 border-b bg-[#F2A65A] backdrop-blur-md border-slate-200 shadow-sm transition-all duration-300`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <>
+      {/* TopBar - hidden when scrolled */}
+      <div
+        className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ${
+          isScrolled ? "-translate-y-full" : "translate-y-0"
+        }`}
+      >
+        <TopBar />
+      </div>
+
+      {/* Main Header */}
+      <header
+        className={`fixed left-0 right-0 z-50 border-b bg-[#F2A65A] backdrop-blur-md border-slate-200 shadow-sm transition-all duration-300 ${
+          isScrolled ? "top-0" : "top-[42px]"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Navigation */}
         <nav className="py-4">
           <div className="flex items-center justify-between gap-4">
@@ -342,5 +365,6 @@ export function Header() {
         </nav>
       </div>
     </header>
+    </>
   );
 }

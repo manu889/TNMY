@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ROUTES } from "@/lib/constants/routes";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { createProductSchema } from "@/lib/constants/schema-templates";
 
 export const metadata: Metadata = {
   title: "SUV Taxi in Mysore | 6-7 Seater",
@@ -8,9 +10,36 @@ export const metadata: Metadata = {
   alternates: { canonical: "/fleet/suv/" },
 };
 
+const suvProductSchema = createProductSchema({
+  name: "SUV Taxi Service in Mysore",
+  description: "Spacious 6-7 seater SUV taxi service in Mysore. Premium Innova Crysta, Ertiga models for families, groups, and travelers with extra luggage.",
+  category: "Vehicle Rental Service",
+  brand: "MM Mysore Travels",
+  offers: {
+    price: 16,
+    priceCurrency: "INR",
+    description: "Per kilometer outstation rate",
+  },
+  aggregateRating: {
+    ratingValue: 4.9,
+    reviewCount: 349,
+  },
+  features: [
+    "6-7 Seater Capacity",
+    "Premium Air Conditioning",
+    "Professional Driver",
+    "Captain Seats (Innova Crysta)",
+    "Large Boot Space",
+    "Powerful Diesel Engine",
+    "Perfect for Families",
+    "Outstation Travel Specialist",
+  ],
+});
+
 export default function FleetSuvPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <JsonLd data={suvProductSchema} />
       <Breadcrumbs items={[{ label: "Fleet", href: ROUTES.FLEET }, { label: "SUV", href: ROUTES.FLEET_SUV }]} />
       
       <div className="mt-6 rounded-3xl bg-gradient-to-br from-emerald-600 to-teal-700 p-10 text-white shadow-xl">

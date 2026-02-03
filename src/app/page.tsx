@@ -6,6 +6,15 @@ import { BUSINESS_INFO } from "@/lib/constants/business-info";
 import { ROUTES } from "@/lib/constants/routes";
 import { BookingForm } from "@/components/forms/BookingForm";
 import { useState, useEffect } from "react";
+import type { Metadata } from "next";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { createReviewSchema } from "@/lib/constants/schema-templates";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+};
 
 function CheckIcon({ className }: { className?: string }) {
   return (
@@ -53,8 +62,8 @@ function HeroImageSlider() {
           />
         </div>
       ))}
-      <div className="absolute inset-0 bg-black/10" />
-      <div className="absolute inset-0 bg-linear-to-b from-slate-900/10 via-slate-900/20 to-slate-900/30" />
+      <div className="absolute inset-0 bg-black/50" />
+      <div className="absolute inset-0 bg-linear-to-b from-slate-900/30 via-slate-900/40 to-slate-900/50" />
     </div>
   );
 }
@@ -164,19 +173,40 @@ export default function Home() {
       route: "Mysore to Coorg",
       text: "Excellent service! The driver was professional and the car was spotlessly clean. Highly recommend for family trips.",
       rating: 5,
+      image: "/images/Client Testimonial/Testimonial (1).jpeg",
+      date: "2025-12-15",
     },
     {
       name: "Priya Sharma",
       route: "Airport Transfer",
       text: "Very reliable and punctual. The booking process was smooth and the driver was courteous throughout the journey.",
       rating: 5,
+      image: "/images/Client Testimonial/Testimonial (2).jpeg",
+      date: "2025-11-28",
     },
     {
       name: "Arun Patel",
       route: "Outstation - Bangalore",
       text: "Great value for money. Competitive rates and no hidden charges. Will definitely book again!",
       rating: 5,
+      image: "/images/Client Testimonial/Testimonial (3).jpeg",
+      date: "2025-12-05",
     },
+  ];
+
+  const testimonialImages = [
+    "/images/Client Testimonial/Testimonial (1).jpeg",
+    "/images/Client Testimonial/Testimonial (2).jpeg",
+    "/images/Client Testimonial/Testimonial (3).jpeg",
+    "/images/Client Testimonial/Testimonial (4).jpeg",
+    "/images/Client Testimonial/Testimonial (5).jpeg",
+    "/images/Client Testimonial/Testimonial (6).jpeg",
+    "/images/Client Testimonial/Testimonial (7).jpeg",
+    "/images/Client Testimonial/Testimonial (8).jpeg",
+    "/images/Client Testimonial/Testimonial (9).jpeg",
+    "/images/Client Testimonial/Testimonial (10).jpeg",
+    "/images/Client Testimonial/Testimonial (11).jpeg",
+    "/images/Client Testimonial/Testimonial (12).jpeg",
   ];
 
   const whatsappFor = (message: string) => {
@@ -229,9 +259,22 @@ export default function Home() {
     },
   ];
 
+  const reviewSchemas = createReviewSchema(
+    testimonials.map(t => ({
+      author: t.name,
+      rating: t.rating,
+      text: t.text,
+      date: t.date,
+      route: t.route,
+    }))
+  );
+
             return (
               <>
-                <section className="relative overflow-hidden bg-slate-900 border-b border-slate-700">
+                {reviewSchemas.map((schema, idx) => (
+                  <JsonLd key={idx} data={schema} />
+                ))}
+                <section className="relative overflow-hidden bg-slate-900">
                   <HeroImageSlider />
                   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-14 relative">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center justify-items-center">
@@ -347,6 +390,35 @@ export default function Home() {
                             </div>
                           </div>
                         </Link>
+                      ))}
+                    </div>
+                  </div>
+                </section>
+
+                {/* Testimonial Images Gallery */}
+                <section className="bg-white py-16">
+                  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center">
+                      <div className="inline-flex items-center rounded-full bg-emerald-50 px-4 py-2 text-xs font-semibold tracking-wide text-emerald-700 ring-1 ring-emerald-200">
+                        Happy Customers
+                      </div>
+                      <h2 className="mt-4 text-3xl md:text-4xl font-bold text-slate-900">Our Satisfied Customers</h2>
+                      <p className="mt-3 text-center text-slate-600 max-w-2xl mx-auto">
+                        Real moments captured with our customers who trust MM Mysore Travels for their journeys.
+                      </p>
+                    </div>
+
+                    <div className="mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                      {testimonialImages.map((img, idx) => (
+                        <div key={idx} className="group relative overflow-hidden rounded-2xl aspect-square ring-1 ring-slate-900/10 hover:shadow-xl transition-all duration-300">
+                          <Image 
+                            src={img} 
+                            alt={`Customer testimonial ${idx + 1} - MM Mysore Travels`} 
+                            fill 
+                            className="object-cover group-hover:scale-110 transition-transform duration-300" 
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        </div>
                       ))}
                     </div>
                   </div>

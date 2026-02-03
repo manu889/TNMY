@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { createServiceSchema } from "@/lib/constants/schema-templates";
 import { BUSINESS_INFO } from "@/lib/constants/business-info";
 import { ROUTES } from "@/lib/constants/routes";
 
@@ -17,6 +19,24 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/services/mysore-sightseeing-taxi/" },
 };
+
+const sightseeingServiceSchema = createServiceSchema({
+  name: "Mysore Sightseeing Taxi Service",
+  description: "Mysore city sightseeing taxi for Palace, Chamundi Hills, Zoo, Brindavan Gardens tours. Half-day and full-day packages with professional drivers and flexible itineraries.",
+  serviceType: "Local Sightseeing Tour Service",
+  areaServed: "Mysore, Karnataka, India",
+  provider: "MM Mysore Travels",
+  offers: {
+    price: 1200,
+    priceCurrency: "INR",
+    description: "Half-day Mysore sightseeing tour (4 hours, 40 km)",
+  },
+  availableChannel: {
+    availableLanguage: "en",
+    serviceUrl: "https://travelmysore.com/services/mysore-sightseeing-taxi/",
+    servicePhone: "+919611353434",
+  },
+});
 
 export default function MysoreSightseeingTaxiPage() {
   const attractions = [
@@ -52,6 +72,7 @@ export default function MysoreSightseeingTaxiPage() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <JsonLd data={sightseeingServiceSchema} />
       <Breadcrumbs
         items={[
           { label: "Services", href: ROUTES.SERVICES },

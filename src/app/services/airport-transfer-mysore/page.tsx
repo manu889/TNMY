@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { createServiceSchema } from "@/lib/constants/schema-templates";
 import { BUSINESS_INFO } from "@/lib/constants/business-info";
 import { ROUTES } from "@/lib/constants/routes";
 
@@ -18,6 +20,24 @@ export const metadata: Metadata = {
   alternates: { canonical: "/services/airport-transfer-mysore/" },
 };
 
+const airportServiceSchema = createServiceSchema({
+  name: "Airport Transfer Service from Mysore",
+  description: "Hassle-free airport pickup and drop-off service from Mysore to Bangalore International Airport with on-time service, flight tracking, and professional drivers.",
+  serviceType: "Airport Transportation Service",
+  areaServed: "Mysore, Karnataka, India",
+  provider: "MM Mysore Travels",
+  offers: {
+    price: 3200,
+    priceCurrency: "INR",
+    description: "One-way airport transfer from Mysore to Bangalore Airport",
+  },
+  availableChannel: {
+    availableLanguage: "en",
+    serviceUrl: "https://travelmysore.com/services/airport-transfer-mysore/",
+    servicePhone: "+919611353434",
+  },
+});
+
 export default function AirportTransferMysorePage() {
   const features = [
     { icon: "✓", title: "Flight-Aware Timing", desc: "Real-time flight tracking and smart timing" },
@@ -30,6 +50,7 @@ export default function AirportTransferMysorePage() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <JsonLd data={airportServiceSchema} />
       <Breadcrumbs
         items={[
           { label: "Services", href: ROUTES.SERVICES },

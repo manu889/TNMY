@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { createServiceSchema } from "@/lib/constants/schema-templates";
 import { BUSINESS_INFO } from "@/lib/constants/business-info";
 import { ROUTES } from "@/lib/constants/routes";
 
@@ -17,6 +19,24 @@ export const metadata: Metadata = {
   alternates: { canonical: "/services/corporate-cab-mysore/" },
 };
 
+const corporateServiceSchema = createServiceSchema({
+  name: "Corporate Cab Service in Mysore",
+  description: "Professional corporate transportation for executives, business travel, guest pickups, and corporate events. Verified drivers, premium vehicles, and dedicated support for your business needs.",
+  serviceType: "Corporate Transportation Service",
+  areaServed: "Mysore, Karnataka, India",
+  provider: "MM Mysore Travels",
+  offers: {
+    price: 2000,
+    priceCurrency: "INR",
+    description: "Full-day corporate cab service in Mysore",
+  },
+  availableChannel: {
+    availableLanguage: "en",
+    serviceUrl: "https://travelmysore.com/services/corporate-cab-mysore/",
+    servicePhone: "+919611353434",
+  },
+});
+
 export default function CorporateCabMysorePage() {
   const features = [
     { title: "Professional Drivers", desc: "Verified, courteous drivers trained in corporate etiquette" },
@@ -29,6 +49,7 @@ export default function CorporateCabMysorePage() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <JsonLd data={corporateServiceSchema} />
       <Breadcrumbs items={[{ label: "Services", href: ROUTES.SERVICES }, { label: "Corporate Cab", href: ROUTES.CORPORATE_CAB }]} />
 
       <div className="rounded-2xl border border-slate-200 bg-gradient-to-br from-blue-50 to-slate-50 p-8">

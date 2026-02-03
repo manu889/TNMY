@@ -110,6 +110,14 @@ export const WEBSITE_SCHEMA = {
   "publisher": {
     "@id": `${BUSINESS_INFO.url}/#organization`
   },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": `${BUSINESS_INFO.url}/search?q={search_term_string}`
+    },
+    "query-input": "required name=search_term_string"
+  },
   "inLanguage": "en-IN"
 };
 
@@ -201,4 +209,110 @@ export const createTourPackageSchema = ({
     }
   },
   ...(duration && { "duration": duration })
+});
+
+export const createReviewSchema = (reviews: Array<{
+  author: string;
+  rating: number;
+  text: string;
+  date?: string;
+  route?: string;
+}>) => reviews.map((review, index) => ({
+  "@context": "https://schema.org",
+  "@type": "Review",
+  "@id": `${BUSINESS_INFO.url}/#review-${index + 1}`,
+  "itemReviewed": {
+    "@type": "LocalBusiness",
+    "@id": `${BUSINESS_INFO.url}/#business`
+  },
+  "author": {
+    "@type": "Person",
+    "name": review.author
+  },
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": review.rating,
+    "bestRating": 5,
+    "worstRating": 1
+  },
+  "reviewBody": review.text,
+  ...(review.date && { "datePublished": review.date }),
+  ...(review.route && { "description": `Trip: ${review.route}` })
+}));
+
+export const createProductSchema = (product: {
+  name: string;
+  description: string;
+  image: string;
+  brand?: string;
+  category: string;
+  offers: {
+    price: string;
+    priceCurrency: string;
+    availability?: string;
+  };
+  features?: string[];
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": product.name,
+  "description": product.description,
+  "image": product.image,
+  "brand": product.brand || BUSINESS_INFO.name,
+  "category": product.category,
+  "offers": {
+    "@type": "Offer",
+    "price": product.offers.price,
+    "priceCurrency": product.offers.priceCurrency || "INR",
+    "availability": product.offers.availability || "https://schema.org/InStock",
+    "seller": {
+      "@id": `${BUSINESS_INFO.url}/#business`
+    }
+  },
+  ...(product.features && {
+    "additionalProperty": product.features.map(feature => ({
+      "@type": "PropertyValue",
+      "name": "Feature",
+      "value": feature
+    }))
+  })
+});
+
+export const createServiceSchema = (service: {
+  name: string;
+  description: string;
+  serviceType: string;
+  areaServed: string[];
+  offers?: {
+    price: string;
+    priceCurrency: string;
+  };
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": service.serviceType,
+  "name": service.name,
+  "description": service.description,
+  "provider": {
+    "@id": `${BUSINESS_INFO.url}/#business`
+  },
+  "areaServed": service.areaServed.map(area => ({
+    "@type": "City",
+    "name": area
+  })),
+  ...(service.offers && {
+    "offers": {
+      "@type": "Offer",
+      "price": service.offers.price,
+      "priceCurrency": service.offers.priceCurrency || "INR",
+      "seller": {
+        "@id": `${BUSINESS_INFO.url}/#business`
+      }
+    }
+  }),
+  "availableChannel": {
+    "@type": "ServiceChannel",
+    "serviceUrl": BUSINESS_INFO.url,
+    "servicePhone": BUSINESS_INFO.phone
+  }
 });

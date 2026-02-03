@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     "tempo traveller mysore",
     "mysore sightseeing taxi"
   ],
-  alternates: { canonical: "/services" },
+  alternates: { canonical: "/services/" },
   openGraph: {
     title: "Taxi Services in Mysore - MM Mysore Travels",
     description: "Leading travel agency in Mysore with 11+ years experience. 4.9★ rated taxi services.",
