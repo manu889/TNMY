@@ -72,7 +72,7 @@ export default function AboutPage() {
                 As a trusted travel operator, we specialize in providing comprehensive <strong>taxi services in Mysore</strong> including outstation cabs, airport transfers, local sightseeing, corporate transportation, and customized tour packages to Coorg, Ooty, Wayanad, Kodaikanal, and other popular destinations.
               </p>
               <p className="mb-4">
-                Our commitment to quality has made us one of the <strong>best travels in Mysore</strong>, earning a remarkable <strong>★{BUSINESS_INFO.rating.value} out of 5 rating</strong> from over <strong>{BUSINESS_INFO.rating.count} satisfied customers</strong>. When you search for &quot;<strong>travels in Mysore</strong>&quot; or &quot;<strong>taxi service Mysore</strong>&quot;, you&apos;re looking for the reliability, safety, and professionalism that MM Mysore Travels delivers every single day.
+                Our commitment to quality has made us one of the <strong>best travels in Mysore</strong>, earning a remarkable <strong>★{BUSINESS_INFO.rating.value} out of 5 rating</strong>. When you search for &quot;<strong>travels in Mysore</strong>&quot; or &quot;<strong>taxi service Mysore</strong>&quot;, you&apos;re looking for the reliability, safety, and professionalism that MM Mysore Travels delivers every single day.
               </p>
               <p className="mb-4">
                 Many customers discover us while searching for &quot;<strong>best travel agency Mysore</strong>&quot;, &quot;<strong>top travels in Mysore</strong>&quot; or reliable &quot;<strong>cabs in Mysore</strong>&quot; for airport, local, and outstation trips.
@@ -106,11 +106,6 @@ export default function AboutPage() {
                   icon: "🌟",
                   title: "4.9★ Customer Rating",
                   desc: "Consistently rated as the best travel agency in Mysore by hundreds of satisfied travelers."
-                },
-                {
-                  icon: "🏆",
-                  title: "Tourism Dept Approved",
-                  desc: "Professional travel operator with certified and verified drivers."
                 },
                 {
                   icon: "⏰",

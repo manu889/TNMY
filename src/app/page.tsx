@@ -153,7 +153,6 @@ export default function Home() {
   const testimonialImages = [
     "/images/Client Testimonial/Testimonial (1).jpeg",
     "/images/Client Testimonial/Testimonial (2).jpeg",
-    "/images/Client Testimonial/Testimonial (3).jpeg",
     "/images/Client Testimonial/Testimonial (4).jpeg",
     "/images/Client Testimonial/Testimonial (5).jpeg",
     "/images/Client Testimonial/Testimonial (6).jpeg",
@@ -163,6 +162,7 @@ export default function Home() {
     "/images/Client Testimonial/Testimonial (10).jpeg",
     "/images/Client Testimonial/Testimonial (11).jpeg",
     "/images/Client Testimonial/Testimonial (12).jpeg",
+    "/images/Client Testimonial/Testimonial (13).jpeg",
   ];
 
   const whatsappFor = (message: string) => {
@@ -594,30 +594,33 @@ export default function Home() {
                 <section className="bg-white">
                   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                     <div className="text-center">
+                      <div className="inline-flex items-center rounded-full bg-blue-50 px-4 py-2 text-xs font-semibold tracking-wide text-blue-700 ring-1 ring-blue-200 mb-4">
+                        Trusted Tour Operator & Organizer in Mysore
+                      </div>
                       <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Leading Travels in Mysore for All Your Transportation Needs</h2>
                       <p className="mt-4 text-lg text-slate-600 max-w-4xl mx-auto">
-                        MM Mysore Travels is your trusted travel agency in Mysore, offering comprehensive taxi services for local sightseeing, outstation trips, airport transfers, and tour packages. With over 15 years of experience, we have established ourselves as one of the top travels in Mysore — often searched as &quot;best travel agency Mysore&quot; — serving thousands of satisfied customers with professional drivers and well-maintained cabs in Mysore.
+                        If you are looking to explore the lovely Mysore, <strong>Travels in Mysore</strong> has got your back. We offer comprehensive <strong>cab and tour packages in Mysore</strong> to ensure you have a seamless journey while you enjoy the city without any hiccups. Our <strong>cabs in Mysore</strong> are driven by professional drivers with extensive knowledge of the region. Through years of driving in these areas, they have explored and discovered hidden gems as well.
                       </p>
                     </div>
 
                     <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
                       <div className="rounded-2xl border border-slate-200 bg-slate-50 p-8">
-                        <h3 className="text-2xl font-bold text-slate-900">Complete Taxi Services in Mysore</h3>
+                        <h3 className="text-2xl font-bold text-slate-900">Oldest & Most Renowned Travel Agency in Mysore</h3>
                         <p className="mt-4 text-slate-700 leading-relaxed">
-                          As a full-service travel agency in Mysore, we provide taxi services for every occasion. Whether you need a quick airport transfer, a comfortable outstation cab to Coorg or Ooty, or a multi-day tour package exploring South India&apos;s hill stations, our travels in Mysore service has you covered. We operate 24/7 with transparent pricing starting at just ₹13/km for outstation trips and ₹1,800 for local packages.
+                          As one of the <strong>oldest and most renowned travel agencies of Mysore</strong>, we at <strong>Travels in Mysore</strong> have continuously improved all our services to meet modern travel needs. We have a dedicated team for <strong>taxi services in Mysore</strong> that ensures all precautionary measures are followed for your safety and comfort.
                         </p>
                         <p className="mt-4 text-slate-700 leading-relaxed">
-                          Our Mysore taxi service includes sedans for couples, SUVs for families, tempo travellers for groups, and buses for large gatherings. If you&apos;re comparing cabs in Mysore for comfort and reliability, our fleet is maintained for clean interiors, AC performance, and safe long-distance driving. All vehicles come with experienced drivers who know the routes inside out, ensuring safe and timely travel.
+                          We carefully choose hotels with proper sanitization standards and lesser crowds. Our commitment is to offer the <strong>best tour packages and travel experiences in Mysore</strong> with complete peace of mind. With over {BUSINESS_INFO.yearsExperience} of experience, we have established ourselves as one of the top travels in Mysore, serving thousands of satisfied customers.
                         </p>
                       </div>
 
                       <div className="rounded-2xl border border-slate-200 bg-slate-50 p-8">
-                        <h3 className="text-2xl font-bold text-slate-900">Why Choose MM Mysore Travels</h3>
+                        <h3 className="text-2xl font-bold text-slate-900">Complete Taxi Services in Mysore</h3>
                         <p className="mt-4 text-slate-700 leading-relaxed">
-                          What sets us apart as the premier travel agency in Mysore is our commitment to customer satisfaction. Our highly rated taxi services in Mysore are backed by verified drivers, GPS-enabled vehicles, and comprehensive insurance coverage for your safety.
+                          As a full-service travel agency in Mysore, we provide taxi services for every occasion. Whether you need a quick airport transfer, a comfortable outstation cab to Coorg or Ooty, or a multi-day tour package exploring South India&apos;s hill stations, our travels in Mysore service has you covered. We operate 24/7 with transparent pricing starting at just ₹11/km for outstation trips.
                         </p>
                         <p className="mt-4 text-slate-700 leading-relaxed">
-                          Our outstation taxi service from Mysore covers popular destinations like Coorg (120km), Ooty (125km), Wayanad (140km), Bangalore (145km), and Kodaikanal (370km). For local travel, we provide customized sightseeing packages covering Mysore Palace, Chamundi Hills, Brindavan Gardens, and other attractions. Corporate clients trust our taxi services in Mysore for reliable business travel with monthly billing options.
+                          Our Mysore taxi service includes sedans for couples, SUVs for families, tempo travellers for groups, and buses for large gatherings. All vehicles come with <strong>experienced drivers</strong> who know the routes inside out and can guide you to hidden gems, ensuring safe, informative, and timely travel experiences.
                         </p>
                       </div>
 
